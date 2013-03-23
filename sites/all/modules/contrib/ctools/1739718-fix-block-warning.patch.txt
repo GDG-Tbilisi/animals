@@ -1,0 +1,14 @@
+diff --git a/plugins/content_types/block/block.inc b/plugins/content_types/block/block.inc
+index f5b0063..8181eed 100644
+--- a/plugins/content_types/block/block.inc
++++ b/plugins/content_types/block/block.inc
+@@ -142,8 +142,8 @@ function ctools_block_content_type_render($subtype, $conf) {
+     // Allow modules to modify the block before it is viewed, via either
+     // hook_block_view_alter() or hook_block_view_MODULE_DELTA_alter().
+     drupal_alter(array('block_view', "block_view_{$module}_{$delta}"), $block, $info);
+-    $block = (object) $block;
+   }
++  $block = (object) $block;
+ 
+   if (empty($block)) {
+     return;
