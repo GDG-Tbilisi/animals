@@ -1,7 +1,33 @@
 <?php
-    function animals_search_block(){
-        $blocks['animals_search_block'] =  array(
-            'info'=> t('info'),
-        );
-        return $blocks;
+
+function animals_search_block_block_info() {
+    $blocks['animals_search_block'] = array(
+        'info' => t('Animals Search Block'),
+    );
+    return $blocks;
+}
+function animals_search_block_block_view($delta = '') {
+    $block = array();
+
+    switch ($delta) {
+        case 'animals_search_block':
+            $block['subject'] = t('Animals Search Block');
+            $block['content'] = array(
+                '#markup' => generate_search_block_markup(),
+             );
+            break;
+
     }
+    return $block;
+}
+function generate_search_block_markup(){
+    return theme('animals_generate_search');
+}
+function animals_search_block_theme() {
+    return array(
+        'animals_generate_search' => array(
+            'template' => 'tpl/animals_html',
+            'variables' => array(),
+        ),
+    );
+}
