@@ -15,15 +15,36 @@ function theme_helper_block_view($delta = ''){
                 $block['content'] = array(
                     '#markup' => theme_helper_categories_content()
                 );
-
         }
     return $block;
 }
 
 function theme_helper_categories_content(){
-    return "revaz zakalashvili aseirnebs dzaglebs";
+//    $vars = array(
+//      'first' => 'FIRST',
+//      'second' => 'SECOND',
+//      'third' => 'THIRD',
+//    );
+    $tax  = taxonomy_vocabulary_machine_name_load('services');
+    $vid  = $tax->vid;
+    $vars = taxonomy_term_get_by_vid($vid);
+    return theme('theme_helper',array('vars' => $vars));
+}
+
+function taxonomy_term_get_by_vid($vid) {
+    $query  = new EntityFieldQuery();
+    $result = $query
+        ->entityCondition('entity_type', 'taxonomy_term')
+        ->propertyCondition('vid', (int) $vid, '=')
+        ->execute();
+    return $result['taxonomy_term'];
 }
 
 function theme_helper_theme(){
-
+    return array(
+       'theme_helper' => array(
+            'template'  => 'tpl/theme_helper',
+            'variables' => array(),
+        )
+    );
 }

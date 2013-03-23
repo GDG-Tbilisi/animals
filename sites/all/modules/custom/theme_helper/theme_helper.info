@@ -1,3 +1,4 @@
-name = Animals Theme
+name = Animals Theme Helper
+package = animals
 description = Animals Default Theme
 core = 7.x
