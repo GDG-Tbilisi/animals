@@ -21,7 +21,7 @@ function animals_search_block_block_view($delta = '') {
     return $block;
 }
 function generate_search_block_markup(){
-    return theme('animals_html', $vars);
+    return theme('animals_generate_search');
 }
 function animals_search_block_theme() {
     return array(
