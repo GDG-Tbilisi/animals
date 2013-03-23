@@ -1,2 +1,29 @@
 <?php
 
+function theme_helper_block_info(){
+    $blocks['categories'] = array(
+       'info' => t('Categories Block'),
+    );
+    return $blocks;
+}
+function theme_helper_block_view($delta = ''){
+        $block = array();
+
+        switch($delta){
+            case 'categories':
+                $block['Subject'] = t('Categories');
+                $block['content'] = array(
+                    '#markup' => theme_helper_categories_content()
+                );
+
+        }
+    return $block;
+}
+
+function theme_helper_categories_content(){
+    return "revaz zakalashvili aseirnebs dzaglebs";
+}
+
+function theme_helper_theme(){
+
+}
