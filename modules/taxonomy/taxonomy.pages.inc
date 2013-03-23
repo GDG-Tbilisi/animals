@@ -119,7 +119,7 @@ function taxonomy_term_feed($term) {
  * @see taxonomy_field_widget_info()
  */
 function taxonomy_autocomplete($field_name, $tags_typed = '') {
-  // If the request has a '/' in the search text, then the menu system will have
+  // If the request has a '/' in the animals_search_block text, then the menu system will have
   // split it into multiple arguments, recover the intended $tags_typed.
   $args = func_get_args();
   // Shift off the $field_name argument.

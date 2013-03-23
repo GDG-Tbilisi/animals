@@ -66,12 +66,12 @@ function hook_ctools_plugin_type() {
  * @param string $plugin_type
  *   The name of the plugin type for which a base directory is being requested.
  * @return string
- *   The path where CTools' plugin system should search for plugin files,
+ *   The path where CTools' plugin system should animals_search_block for plugin files,
  *   relative to your module's root. Omit leading and trailing slashes.
  */
 function hook_ctools_plugin_directory($owner, $plugin_type) {
   // Form 1 - for a module implementing only the 'content_types' plugin owned
-  // by CTools, this would cause the plugin system to search the
+  // by CTools, this would cause the plugin system to animals_search_block the
   // <moduleroot>/plugins/content_types directory for .inc plugin files.
   if ($owner == 'ctools' && $plugin_type == 'content_types') {
     return 'plugins/content_types';

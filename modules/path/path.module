@@ -13,7 +13,7 @@ function path_help($path, $arg) {
     case 'admin/help#path':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('The Path module allows you to specify an alias, or custom URL, for any existing internal system path. Aliases should not be confused with URL redirects, which allow you to forward a changed or inactive URL to a new URL. In addition to making URLs more readable, aliases also help search engines index content more effectively. Multiple aliases may be used for a single internal system path. To automate the aliasing of paths, you can install the contributed module <a href="@pathauto">Pathauto</a>. For more information, see the online handbook entry for the <a href="@path">Path module</a>.', array('@path' => 'http://drupal.org/documentation/modules/path', '@pathauto' => 'http://drupal.org/project/pathauto')) . '</p>';
+      $output .= '<p>' . t('The Path module allows you to specify an alias, or custom URL, for any existing internal system path. Aliases should not be confused with URL redirects, which allow you to forward a changed or inactive URL to a new URL. In addition to making URLs more readable, aliases also help animals_search_block engines index content more effectively. Multiple aliases may be used for a single internal system path. To automate the aliasing of paths, you can install the contributed module <a href="@pathauto">Pathauto</a>. For more information, see the online handbook entry for the <a href="@path">Path module</a>.', array('@path' => 'http://drupal.org/documentation/modules/path', '@pathauto' => 'http://drupal.org/project/pathauto')) . '</p>';
       $output .= '<h3>' . t('Uses') . '</h3>';
       $output .= '<dl>';
       $output .= '<dt>' . t('Creating aliases') . '</dt>';
@@ -22,14 +22,14 @@ function path_help($path, $arg) {
       $output .= '<li>' . t('<em>about-us/team</em> aliased to internal path <em>node/456</em>') . '</li>';
       $output .= '</ul></dd>';
       $output .= '<dt>' . t('Managing aliases') . '</dt>';
-      $output .= '<dd>' . t('The Path module provides a way to search and view a <a href="@aliases">list of all aliases</a> that are in use on your website. Aliases can be added, edited and deleted through this list.', array('@aliases' => url('admin/config/search/path'))) . '</dd>';
+      $output .= '<dd>' . t('The Path module provides a way to animals_search_block and view a <a href="@aliases">list of all aliases</a> that are in use on your website. Aliases can be added, edited and deleted through this list.', array('@aliases' => url('admin/config/animals_search_block/path'))) . '</dd>';
       $output .= '</dl>';
       return $output;
 
-    case 'admin/config/search/path':
+    case 'admin/config/animals_search_block/path':
       return '<p>' . t("An alias defines a different name for an existing URL path - for example, the alias 'about' for the URL path 'node/1'. A URL path can have multiple aliases.") . '</p>';
 
-    case 'admin/config/search/path/add':
+    case 'admin/config/animals_search_block/path/add':
       return '<p>' . t('Enter the path you wish to create the alias for, followed by the name of the new alias.') . '</p>';
   }
 }
@@ -52,7 +52,7 @@ function path_permission() {
  * Implements hook_menu().
  */
 function path_menu() {
-  $items['admin/config/search/path'] = array(
+  $items['admin/config/animals_search_block/path'] = array(
     'title' => 'URL aliases',
     'description' => "Change your site's URL paths by aliasing them.",
     'page callback' => 'path_admin_overview',
@@ -60,26 +60,26 @@ function path_menu() {
     'weight' => -5,
     'file' => 'path.admin.inc',
   );
-  $items['admin/config/search/path/edit/%path'] = array(
+  $items['admin/config/animals_search_block/path/edit/%path'] = array(
     'title' => 'Edit alias',
     'page callback' => 'path_admin_edit',
     'page arguments' => array(5),
     'access arguments' => array('administer url aliases'),
     'file' => 'path.admin.inc',
   );
-  $items['admin/config/search/path/delete/%path'] = array(
+  $items['admin/config/animals_search_block/path/delete/%path'] = array(
     'title' => 'Delete alias',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('path_admin_delete_confirm', 5),
     'access arguments' => array('administer url aliases'),
     'file' => 'path.admin.inc',
   );
-  $items['admin/config/search/path/list'] = array(
+  $items['admin/config/animals_search_block/path/list'] = array(
     'title' => 'List',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
   );
-  $items['admin/config/search/path/add'] = array(
+  $items['admin/config/animals_search_block/path/add'] = array(
     'title' => 'Add alias',
     'page callback' => 'path_admin_edit',
     'access arguments' => array('administer url aliases'),

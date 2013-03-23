@@ -409,8 +409,8 @@ function zen_preprocess_block(&$variables, $hook) {
     case 'statistics':
       $variables['attributes_array']['role'] = 'navigation';
       break;
-    case 'search':
-      $variables['attributes_array']['role'] = 'search';
+    case 'animals_search_block':
+      $variables['attributes_array']['role'] = 'animals_search_block';
       break;
     case 'help':
     case 'aggregator':

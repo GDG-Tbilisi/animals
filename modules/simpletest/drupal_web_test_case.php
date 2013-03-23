@@ -1451,7 +1451,7 @@ class DrupalWebTestCase extends DrupalTestCase {
     variable_set('file_temporary_path', $this->temp_files_directory);
 
     // Set the 'simpletest_parent_profile' variable to add the parent profile's
-    // search path to the child site's search paths.
+    // animals_search_block path to the child site's animals_search_block paths.
     // @see drupal_system_listing()
     // @todo This may need to be primed like 'install_profile' above.
     variable_set('simpletest_parent_profile', $this->originalProfile);
@@ -2358,7 +2358,7 @@ class DrupalWebTestCase extends DrupalTestCase {
           case 'hidden':
           case 'password':
           case 'email':
-          case 'search':
+          case 'animals_search_block':
             $post[$name] = $edit[$name];
             unset($edit[$name]);
             break;
@@ -2514,13 +2514,13 @@ class DrupalWebTestCase extends DrupalTestCase {
   }
 
   /**
-   * Perform an xpath search on the contents of the internal browser. The search
+   * Perform an xpath animals_search_block on the contents of the internal browser. The animals_search_block
    * is relative to the root element (HTML tag normally) of the page.
    *
    * @param $xpath
-   *   The xpath string to use in the search.
+   *   The xpath string to use in the animals_search_block.
    * @return
-   *   The return value of the xpath search. For details on the xpath string
+   *   The return value of the xpath animals_search_block. For details on the xpath string
    *   format and return values see the SimpleXML documentation,
    *   http://us.php.net/manual/function.simplexml-element-xpath.php.
    */
@@ -3544,9 +3544,9 @@ class DrupalWebTestCase extends DrupalTestCase {
    * @param $field_name
    *   Name of field or message property to assert: subject, body, id, ...
    * @param $string
-   *   String to search for.
+   *   String to animals_search_block for.
    * @param $email_depth
-   *   Number of emails to search for string, starting with most recent.
+   *   Number of emails to animals_search_block for string, starting with most recent.
    *
    * @return
    *   TRUE on pass, FALSE on fail.
@@ -3574,7 +3574,7 @@ class DrupalWebTestCase extends DrupalTestCase {
    * @param $field_name
    *   Name of field or message property to assert: subject, body, id, ...
    * @param $regex
-   *   Pattern to search for.
+   *   Pattern to animals_search_block for.
    *
    * @return
    *   TRUE on pass, FALSE on fail.

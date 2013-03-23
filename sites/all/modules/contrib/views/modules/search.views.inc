@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provide views data and handlers for search.module.
+ * Provide views data and handlers for animals_search_block.module.
  *
  * @ingroup views_module_handlers
  */
@@ -61,14 +61,14 @@ function search_views_data() {
   // score
   $data['search_index']['score'] = array(
     'title' => t('Score'),
-    'help' => t('The score of the search item. This will not be used if the search filter is not also present.'),
+    'help' => t('The score of the animals_search_block item. This will not be used if the animals_search_block filter is not also present.'),
     'field' => array(
       'handler' => 'views_handler_field_search_score',
       'click sortable' => TRUE,
       'float' => TRUE,
       'no group by' => TRUE,
     ),
-    // Information for sorting on a search score.
+    // Information for sorting on a animals_search_block score.
     'sort' => array(
       'handler' => 'views_handler_sort_search_score',
       'no group by' => TRUE,
@@ -111,11 +111,11 @@ function search_views_data() {
     ),
   );
 
-  // search filter
+  // animals_search_block filter
   $data['search_index']['keys'] = array(
     'title' => t('Search Terms'), // The item it appears as on the UI,
-    'help' => t('The terms to search for.'), // The help that appears on the UI,
-    // Information for searching terms using the full search syntax
+    'help' => t('The terms to animals_search_block for.'), // The help that appears on the UI,
+    // Information for searching terms using the full animals_search_block syntax
     'filter' => array(
       'handler' => 'views_handler_filter_search',
       'no group by' => TRUE,
@@ -138,12 +138,12 @@ function search_views_plugins() {
   return array(
     'module' => 'views', // This just tells our themes are elsewhere.
     'row' => array(
-      'search' => array(
+      'animals_search_block' => array(
         'title' => t('Search'),
-        'help' => t('Display the results with standard search view.'),
+        'help' => t('Display the results with standard animals_search_block view.'),
         'handler' => 'views_plugin_row_search_view',
         'theme' => 'views_view_row_search',
-        'path' => drupal_get_path('module', 'views') . '/modules/search', // not necessary for most modules
+        'path' => drupal_get_path('module', 'views') . '/modules/animals_search_block', // not necessary for most modules
         'base' => array('node'), // only works with 'node' as base.
         'type' => 'normal',
       ),
@@ -164,7 +164,7 @@ function template_preprocess_views_view_row_search(&$vars) {
     return;
   }
 
-  // @todo: Once the search row is fixed this node_load should be replace by a node_load_multiple
+  // @todo: Once the animals_search_block row is fixed this node_load should be replace by a node_load_multiple
   $node = node_load($nid);
 
   if (empty($node)) {

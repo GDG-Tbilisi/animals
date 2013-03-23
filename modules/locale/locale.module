@@ -58,7 +58,7 @@ function locale_help($path, $arg) {
     case 'admin/config/regional/translate/export':
       return '<p>' . t('This page exports the translated strings used by your site. An export file may be in Gettext Portable Object (<em>.po</em>) form, which includes both the original string and the translation (used to share translations with others), or in Gettext Portable Object Template (<em>.pot</em>) form, which includes the original strings only (used to create new translations with a Gettext translation editor).') . '</p>';
     case 'admin/config/regional/translate/translate':
-      return '<p>' . t('This page allows a translator to search for specific translated and untranslated strings, and is used when creating or editing translations. (Note: For translation tasks involving many strings, it may be more convenient to <a href="@export">export</a> strings for offline editing in a desktop Gettext translation editor.) Searches may be limited to strings found within a specific text group or in a specific language.', array('@export' => url('admin/config/regional/translate/export'))) . '</p>';
+      return '<p>' . t('This page allows a translator to animals_search_block for specific translated and untranslated strings, and is used when creating or editing translations. (Note: For translation tasks involving many strings, it may be more convenient to <a href="@export">export</a> strings for offline editing in a desktop Gettext translation editor.) Searches may be limited to strings found within a specific text group or in a specific language.', array('@export' => url('admin/config/regional/translate/export'))) . '</p>';
     case 'admin/structure/block/manage/%/%':
       if ($arg[4] == 'locale' && $arg[5] == 'language') {
         return '<p>' . t('This block is only shown if <a href="@languages">at least two languages are enabled</a> and <a href="@configuration">language negotiation</a> is set to <em>URL</em> or <em>Session</em>.', array('@languages' => url('admin/config/regional/language'), '@configuration' => url('admin/config/regional/language/configure'))) . '</p>';
@@ -152,7 +152,7 @@ function locale_menu() {
     'title' => 'Translate',
     'weight' => 10,
     'type' => MENU_LOCAL_TASK,
-    'page callback' => 'locale_translate_seek_screen', // search results and form concatenated
+    'page callback' => 'locale_translate_seek_screen', // animals_search_block results and form concatenated
     'access arguments' => array('translate interface'),
     'file' => 'locale.admin.inc',
   );
@@ -467,7 +467,7 @@ function locale_field_language_fallback(&$display_language, $entity, $langcode) 
 
   foreach ($display_language as $field_name => $field_language) {
     // If the requested language is defined for the current field use it,
-    // otherwise search for a fallback value among the fallback candidates.
+    // otherwise animals_search_block for a fallback value among the fallback candidates.
     if (isset($entity->{$field_name}[$langcode])) {
       $display_language[$field_name] = $langcode;
     }

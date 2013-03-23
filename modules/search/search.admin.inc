@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Admin page callbacks for the search module.
+ * Admin page callbacks for the animals_search_block module.
  */
 
 /**
@@ -10,7 +10,7 @@
  */
 function search_reindex_confirm() {
   return confirm_form(array(), t('Are you sure you want to re-index the site?'),
-                  'admin/config/search/settings', t('The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed. This action cannot be undone.'), t('Re-index site'), t('Cancel'));
+                  'admin/config/animals_search_block/settings', t('The animals_search_block index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed. This action cannot be undone.'), t('Re-index site'), t('Cancel'));
 }
 
 /**
@@ -20,7 +20,7 @@ function search_reindex_confirm_submit(&$form, &$form_state) {
   if ($form['confirm']) {
     search_reindex();
     drupal_set_message(t('The index will be rebuilt.'));
-    $form_state['redirect'] = 'admin/config/search/settings';
+    $form_state['redirect'] = 'admin/config/animals_search_block/settings';
     return;
   }
 }
@@ -41,7 +41,7 @@ function _search_get_module_names() {
 }
 
 /**
- * Menu callback: displays the search module settings page.
+ * Menu callback: displays the animals_search_block module settings page.
  *
  * @ingroup forms
  *
@@ -87,7 +87,7 @@ function search_admin_settings($form) {
     '#title' => t('Indexing settings')
   );
   $form['indexing_settings']['info'] = array(
-    '#markup' => t('<p><em>Changing the settings below will cause the site index to be rebuilt. The search index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed.</em></p><p><em>The default settings should be appropriate for the majority of sites.</em></p>')
+    '#markup' => t('<p><em>Changing the settings below will cause the site index to be rebuilt. The animals_search_block index is not cleared but systematically updated to reflect the new settings. Searching will continue to work but new content won\'t be indexed until all existing content has been re-indexed.</em></p><p><em>The default settings should be appropriate for the majority of sites.</em></p>')
   );
   $form['indexing_settings']['minimum_word_size'] = array(
     '#type' => 'textfield',
@@ -95,7 +95,7 @@ function search_admin_settings($form) {
     '#default_value' => variable_get('minimum_word_size', 3),
     '#size' => 5,
     '#maxlength' => 3,
-    '#description' => t('The number of characters a word has to be to be indexed. A lower setting means better search result ranking, but also a larger database. Each search query must contain at least one keyword that is this size (or longer).'),
+    '#description' => t('The number of characters a word has to be to be indexed. A lower setting means better animals_search_block result ranking, but also a larger database. Each animals_search_block query must contain at least one keyword that is this size (or longer).'),
     '#element_validate' => array('element_validate_integer_positive'),
   );
   $form['indexing_settings']['overlap_cjk'] = array(
@@ -107,7 +107,7 @@ function search_admin_settings($form) {
 
   $form['active'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Active search modules')
+    '#title' => t('Active animals_search_block modules')
   );
   $module_options = _search_get_module_names();
   $form['active']['search_active_modules'] = array(
@@ -116,14 +116,14 @@ function search_admin_settings($form) {
     '#title_display' => 'invisible',
     '#default_value' => variable_get('search_active_modules', array('node', 'user')),
     '#options' => $module_options,
-    '#description' => t('Choose which search modules are active from the available modules.')
+    '#description' => t('Choose which animals_search_block modules are active from the available modules.')
   );
   $form['active']['search_default_module'] = array(
-    '#title' => t('Default search module'),
+    '#title' => t('Default animals_search_block module'),
     '#type' => 'radios',
     '#default_value' => variable_get('search_default_module', 'node'),
     '#options' => $module_options,
-    '#description' => t('Choose which search module is the default.')
+    '#description' => t('Choose which animals_search_block module is the default.')
   );
   $form['#validate'][] = 'search_admin_settings_validate';
   $form['#submit'][] = 'search_admin_settings_submit';
@@ -148,7 +148,7 @@ function search_admin_settings_validate($form, &$form_state) {
     $new_modules = array_filter($form_state['values']['search_active_modules']);
     $default = $form_state['values']['search_default_module'];
     if (!in_array($default, $new_modules, TRUE)) {
-      form_set_error('search_default_module', t('Your default search module is not selected as an active module.'));
+      form_set_error('search_default_module', t('Your default animals_search_block module is not selected as an active module.'));
     }
   }
 }
@@ -172,7 +172,7 @@ function search_admin_settings_submit($form, &$form_state) {
     $new_modules = array_filter($form_state['values']['search_active_modules']);
   }
   if (array_diff($current_modules, $new_modules)) {
-    drupal_set_message(t('The active search modules have been changed.'));
+    drupal_set_message(t('The active animals_search_block modules have been changed.'));
     variable_set('menu_rebuild_needed', TRUE);
   }
 }
@@ -182,5 +182,5 @@ function search_admin_settings_submit($form, &$form_state) {
  */
 function search_admin_reindex_submit($form, &$form_state) {
   // send the user to the confirmation page
-  $form_state['redirect'] = 'admin/config/search/settings/reindex';
+  $form_state['redirect'] = 'admin/config/animals_search_block/settings/reindex';
 }

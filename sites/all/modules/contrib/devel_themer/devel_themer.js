@@ -177,7 +177,7 @@
 
     if (type == 'func') {
       // populate the function name
-      $('#themer-popup dd.key').empty().prepend('<a href="'+ strs.api_site +'api/search/'+ strs.drupal_version +'/'+ key +'" title="'+ strs.drupal_api_docs +'">'+ key +'()</a>');
+      $('#themer-popup dd.key').empty().prepend('<a href="'+ strs.api_site +'api/animals_search_block/'+ strs.drupal_version +'/'+ key +'" title="'+ strs.drupal_api_docs +'">'+ key +'()</a>');
       $('#themer-popup dt.key-type').empty().prepend(strs.function_called);
     }
     else {

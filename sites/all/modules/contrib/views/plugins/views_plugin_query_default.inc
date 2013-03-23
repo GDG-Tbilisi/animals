@@ -314,7 +314,7 @@ class views_plugin_query_default extends views_plugin_query {
    *   A views_join object (or derived object) to join the alias in.
    * @param $base
    *   The name of the 'base' table this relationship represents; this
-   *   tells the join search which path to attempt to use when finding
+   *   tells the join animals_search_block which path to attempt to use when finding
    *   the path to this relationship.
    * @param $link_point
    *   If this relationship links to something other than the primary

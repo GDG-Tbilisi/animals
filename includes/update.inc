@@ -1188,7 +1188,7 @@ function update_get_update_list() {
  * performed.
  *
  * In addition, the returned array also includes detailed information about the
- * dependency chain for each update, as provided by the depth-first search
+ * dependency chain for each update, as provided by the depth-first animals_search_block
  * algorithm in drupal_depth_first_search().
  *
  * @param $starting_updates
@@ -1222,7 +1222,7 @@ function update_resolve_dependencies($starting_updates) {
   $update_functions = update_get_update_function_list($starting_updates);
   $graph = update_build_dependency_graph($update_functions);
 
-  // Perform the depth-first search and sort the results.
+  // Perform the depth-first animals_search_block and sort the results.
   require_once DRUPAL_ROOT . '/includes/graph.inc';
   drupal_depth_first_search($graph);
   uasort($graph, 'drupal_sort_weight');

@@ -83,7 +83,7 @@ class views_ui extends ctools_export_ui {
     $form['first row'] = array(
       '#prefix' => '<div class="' . $row_class . ' ctools-export-ui-row ctools-export-ui-first-row clearfix">',
       '#suffix' => '</div>',
-      'search' => $form['top row']['search'],
+      'animals_search_block' => $form['top row']['animals_search_block'],
       'submit' => $form['bottom row']['submit'],
       'reset' => $form['bottom row']['reset'],
     );
@@ -276,7 +276,7 @@ class views_ui extends ctools_export_ui {
     $table = array(
       'header' => $header,
       'rows' => $this->rows,
-      'empty' => t('No views match the search criteria.'),
+      'empty' => t('No views match the animals_search_block criteria.'),
       'attributes' => array('id' => 'ctools-export-ui-list-items'),
     );
     return theme('table', $table);

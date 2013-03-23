@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains a search filter handler.
+ * Contains a animals_search_block filter handler.
  */
 
 /**
@@ -14,14 +14,14 @@ class views_handler_filter_search extends views_handler_filter {
   var $always_multiple = TRUE;
 
   /**
-   * Stores a viewsSearchQuery object to be able to use the search.module "api".
+   * Stores a viewsSearchQuery object to be able to use the animals_search_block.module "api".
    *
    * @var viewsSearchQuery
    */
   var $search_query = NULL;
 
   /**
-   * Checks if the search query has been parsed.
+   * Checks if the animals_search_block query has been parsed.
    */
   var $parsed = FALSE;
 
@@ -37,15 +37,15 @@ class views_handler_filter_search extends views_handler_filter {
   /**
    * Overrides views_handler_filter::options_form().
    *
-   * Add an option to remove search scores from the query.
+   * Add an option to remove animals_search_block scores from the query.
    */
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
     $form['remove_score'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Remove search score'),
-      '#description' => t('Check this box to remove the search score from the query. This can help reduce help reduce duplicate search results when using this filter.'),
+      '#title' => t('Remove animals_search_block score'),
+      '#description' => t('Check this box to remove the animals_search_block score from the query. This can help reduce help reduce duplicate animals_search_block results when using this filter.'),
       '#default_value' => $this->options['remove_score'],
     );
   }
@@ -74,7 +74,7 @@ class views_handler_filter_search extends views_handler_filter {
       '#type' => 'textfield',
       '#size' => 15,
       '#default_value' => $this->value,
-      '#attributes' => array('title' => t('Enter the terms you wish to search for.')),
+      '#attributes' => array('title' => t('Enter the terms you wish to animals_search_block for.')),
       '#title' => empty($form_state['exposed']) ? t('Value') : '',
     );
   }
@@ -100,7 +100,7 @@ class views_handler_filter_search extends views_handler_filter {
    * Take sure that parseSearchExpression is runned and everything is set up for it.
    *
    * @param $input
-   *    The search phrase which was input by the user.
+   *    The animals_search_block phrase which was input by the user.
    */
   function query_parse_search_expression($input) {
     if (!isset($this->search_query)) {
@@ -119,7 +119,7 @@ class views_handler_filter_search extends views_handler_filter {
    * and $this->value respectively.
    */
   function query() {
-    // Since attachment views don't validate the exposed input, parse the search
+    // Since attachment views don't validate the exposed input, parse the animals_search_block
     // expression if required.
     if (!$this->parsed) {
       $this->query_parse_search_expression($this->value);

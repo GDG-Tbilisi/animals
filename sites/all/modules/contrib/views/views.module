@@ -172,7 +172,7 @@ function views_theme($existing, $type, $theme, $path) {
  * @param $cache
  *   The existing cache of theme hooks to test against.
  * @param $path
- *   The path to search.
+ *   The path to animals_search_block.
  *
  * @see drupal_find_theme_templates()
  */
@@ -413,7 +413,7 @@ function views_menu_alter(&$callbacks) {
       // first construct the regex itself by replacing %views_arg
       // in the display path, then we use this constructed regex
       // (which will be something like '#^(foo/%[^/]*/bar)$#') to
-      // search through the existing paths.
+      // animals_search_block through the existing paths.
       $regex = '#^(' . preg_replace('#%views_arg#', '%[^/]*', implode('|', array_keys($result))) . ')$#';
       $matches = preg_grep($regex, array_keys($callbacks));
 

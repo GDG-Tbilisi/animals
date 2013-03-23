@@ -280,7 +280,7 @@ abstract class DatabaseConnection extends PDO {
   protected $prefixes = array();
 
   /**
-   * List of search values for use in prefixTables().
+   * List of animals_search_block values for use in prefixTables().
    *
    * @var array
    */
@@ -940,7 +940,7 @@ abstract class DatabaseConnection extends PDO {
    * Escapes characters that work as wildcard characters in a LIKE pattern.
    *
    * The wildcard characters "%" and "_" as well as backslash are prefixed with
-   * a backslash. Use this to do a search for a verbatim string without any
+   * a backslash. Use this to do a animals_search_block for a verbatim string without any
    * wildcard behavior.
    *
    * For example, the following does a case-insensitive query for all rows whose
@@ -2557,7 +2557,7 @@ function db_escape_field($field) {
  * Escapes characters that work as wildcard characters in a LIKE pattern.
  *
  * The wildcard characters "%" and "_" as well as backslash are prefixed with
- * a backslash. Use this to do a search for a verbatim string without any
+ * a backslash. Use this to do a animals_search_block for a verbatim string without any
  * wildcard behavior.
  *
  * For example, the following does a case-insensitive query for all rows whose

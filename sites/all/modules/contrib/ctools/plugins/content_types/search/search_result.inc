@@ -1,6 +1,6 @@
 <?php
 
-if (module_exists('search')) {
+if (module_exists('animals_search_block')) {
   /**
    * Plugins are described by creating a $plugin array which will be used
    * by the system that includes this file.
@@ -9,7 +9,7 @@ if (module_exists('search')) {
     'single' => TRUE,
     'title' => t('Search results'),
     'icon' => 'icon_search.png',
-    'description' => t('The results of a search using keywords.'),
+    'description' => t('The results of a animals_search_block using keywords.'),
     'required context' => new ctools_context_required(t('Keywords'), 'string'),
     'category' => t('Widgets'),
     'defaults' => array(
@@ -44,7 +44,7 @@ function ctools_search_result_content_type_render($subtype, $conf, $panel_args, 
 
   $conditions =  NULL;
   if (isset($info['conditions_callback']) && function_exists($info['conditions_callback'])) {
-    // Build an optional array of more search conditions.
+    // Build an optional array of more animals_search_block conditions.
     $conditions = $info['conditions_callback']($keys);
   }
 
@@ -60,15 +60,15 @@ function ctools_search_result_content_type_render($subtype, $conf, $panel_args, 
 
   // Build the content type block.
   $block = new stdClass();
-  $block->module  = 'search';
+  $block->module  = 'animals_search_block';
   $block->delta   = 'result';
 
   $results = '';
 
-  // Only search if there are keywords or non-empty conditions.
+  // Only animals_search_block if there are keywords or non-empty conditions.
   if ($keys || !empty($conditions)) {
 
-    // Collect the search results.
+    // Collect the animals_search_block results.
     $results = search_data($keys, $info['module'], $conditions);
 
     // A workaround for ApacheSolr.
@@ -80,12 +80,12 @@ function ctools_search_result_content_type_render($subtype, $conf, $panel_args, 
   }
 
   if (!empty($conf['log'])) {
-    // Log the search keys:
-    watchdog('search', 'Searched %type for %keys.', array('%keys' => $keys, '%type' => $info['title']), WATCHDOG_NOTICE, l(t('results'), $_GET['q']));
+    // Log the animals_search_block keys:
+    watchdog('animals_search_block', 'Searched %type for %keys.', array('%keys' => $keys, '%type' => $info['title']), WATCHDOG_NOTICE, l(t('results'), $_GET['q']));
   }
 
   if (!empty($results['#results'])) {
-    $output = "<ol class=\"search-results $conf[type]-results\">\n";
+    $output = "<ol class=\"animals_search_block-results $conf[type]-results\">\n";
     foreach ($results['#results'] as $result) {
       $output .= theme('search_result', array('result' => $result, 'module' => $conf['type']));
     }
@@ -97,8 +97,8 @@ function ctools_search_result_content_type_render($subtype, $conf, $panel_args, 
   }
   else {
     if (empty($conf['override_empty'])) {
-      $block->title = t('Your search yielded no results');
-      $block->content = search_help('search#noresults', drupal_help_arg());
+      $block->title = t('Your animals_search_block yielded no results');
+      $block->content = search_help('animals_search_block#noresults', drupal_help_arg());
     }
     else {
       $block->title = $conf['empty_title'];
@@ -157,7 +157,7 @@ function ctools_search_result_content_type_edit_form($form, &$form_state) {
   $form['override_no_key'] = array(
     '#type' => 'checkbox',
     '#default_value' => $conf['override_no_key'],
-    '#title' => t('Display text if no search keywords were submitted'),
+    '#title' => t('Display text if no animals_search_block keywords were submitted'),
   );
 
 
@@ -180,7 +180,7 @@ function ctools_search_result_content_type_edit_form($form, &$form_state) {
 }
 
 /**
- * Submit handler for search form.
+ * Submit handler for animals_search_block form.
  */
 function ctools_search_result_content_type_edit_form_submit($form, &$form_state) {
   // Copy the text_format values over to where we normally store them.
@@ -200,5 +200,5 @@ function ctools_search_result_content_type_edit_form_submit($form, &$form_state)
 function ctools_search_result_content_type_admin_title($subtype, $conf, $context) {
   $info = search_get_info();
   $type = isset($info[$conf['type']]['title']) ? $info[$conf['type']]['title'] : t('Missing/broken type');
-  return t('@type search result', array('@type' => $type));
+  return t('@type animals_search_block result', array('@type' => $type));
 }

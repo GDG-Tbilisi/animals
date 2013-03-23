@@ -2432,7 +2432,7 @@ function menu_set_active_trail($new_trail = NULL) {
  *   The path, for example 'node/5'. The function will find the corresponding
  *   menu link ('node/5' if it exists, or fallback to 'node/%').
  * @param $selected_menu
- *   The name of a menu used to restrict the search for a preferred menu link.
+ *   The name of a menu used to restrict the animals_search_block for a preferred menu link.
  *   If not specified, all the menus returned by menu_get_active_menu_names()
  *   will be used.
  *
@@ -2492,7 +2492,7 @@ function menu_link_get_preferred($path = NULL, $selected_menu = NULL) {
     foreach ($query->execute() as $candidate) {
       $candidate['weight'] = $candidate['link_weight'];
       $candidates[$candidate['link_path']][$candidate['menu_name']] = $candidate;
-      // Add any menus not already in the menu name search list.
+      // Add any menus not already in the menu name animals_search_block list.
       if (!in_array($candidate['menu_name'], $menu_names)) {
         $menu_names[] = $candidate['menu_name'];
       }

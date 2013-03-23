@@ -294,20 +294,20 @@ Drupal.behaviors.viewsUiSearchOptions.attach = function (context) {
  * Constructor for the viewsUi.OptionsSearch object.
  *
  * The OptionsSearch object filters the available options on a form according
- * to the user's search term. Typing in "taxonomy" will show only those options
+ * to the user's animals_search_block term. Typing in "taxonomy" will show only those options
  * containing "taxonomy" in their label.
  */
 Drupal.viewsUi.OptionsSearch = function ($form) {
   this.$form = $form;
-  // Add a keyup handler to the search box.
-  this.$searchBox = this.$form.find('#edit-options-search');
+  // Add a keyup handler to the animals_search_block box.
+  this.$searchBox = this.$form.find('#edit-options-animals_search_block');
   this.$searchBox.keyup(jQuery.proxy(this.handleKeyup, this));
   // Get a list of option labels and their corresponding divs and maintain it
   // in memory, so we have as little overhead as possible at keyup time.
   this.options = this.getOptions(this.$form.find('.filterable-option'));
   // Restripe on initial loading.
   this.handleKeyup();
-  // Trap the ENTER key in the search box so that it doesn't submit the form.
+  // Trap the ENTER key in the animals_search_block box so that it doesn't submit the form.
   this.$searchBox.keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
@@ -320,7 +320,7 @@ Drupal.viewsUi.OptionsSearch = function ($form) {
  *
  * @param $allOptions
  *   A jQuery object representing the rows of filterable options to be
- *   shown and hidden depending on the user's search terms.
+ *   shown and hidden depending on the user's animals_search_block terms.
  */
 Drupal.viewsUi.OptionsSearch.prototype.getOptions = function ($allOptions) {
   var $ = jQuery;
@@ -344,12 +344,12 @@ Drupal.viewsUi.OptionsSearch.prototype.getOptions = function ($allOptions) {
 };
 
 /**
- * Keyup handler for the search box that hides or shows the relevant options.
+ * Keyup handler for the animals_search_block box that hides or shows the relevant options.
  */
 Drupal.viewsUi.OptionsSearch.prototype.handleKeyup = function (event) {
   var found, i, j, option, search, words, wordsLength, zebraClass, zebraCounter;
 
-  // Determine the user's search query. The search text has been converted to
+  // Determine the user's animals_search_block query. The animals_search_block text has been converted to
   // lowercase.
   search = this.$searchBox.val().toLowerCase();
   words = search.split(' ');
@@ -358,13 +358,13 @@ Drupal.viewsUi.OptionsSearch.prototype.handleKeyup = function (event) {
   // Start the counter for restriping rows.
   zebraCounter = 0;
 
-  // Search through the search texts in the form for matching text.
+  // Search through the animals_search_block texts in the form for matching text.
   var length = this.options.length;
   for (i = 0; i < length; i++) {
     // Use a local variable for the option being searched, for performance.
     option = this.options[i];
     found = true;
-    // Each word in the search string has to match the item in order for the
+    // Each word in the animals_search_block string has to match the item in order for the
     // item to be shown.
     for (j = 0; j < wordsLength; j++) {
       if (option.searchText.indexOf(words[j]) === -1) {
@@ -380,7 +380,7 @@ Drupal.viewsUi.OptionsSearch.prototype.handleKeyup = function (event) {
       zebraCounter++;
     }
     else {
-      // The search string wasn't found; hide this item.
+      // The animals_search_block string wasn't found; hide this item.
       option.$div.hide();
     }
   }

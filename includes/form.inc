@@ -228,7 +228,7 @@ function drupal_get_form($form_id) {
  *     necessary. This should only be used on RESTful GET forms that do NOT
  *     write data, as this could lead to security issues. It is useful so that
  *     searches do not need to have a form_id in their query arguments to
- *     trigger the search.
+ *     trigger the animals_search_block.
  *   - must_validate: Ordinarily, a form is only validated once, but there are
  *     times when a form is resubmitted internally and should be validated
  *     again. Setting this to TRUE will force that to happen. This is most
@@ -999,7 +999,7 @@ function drupal_prepare_form($form_id, &$form, &$form_state) {
   // During installation, there is no $user yet.
   if (!empty($user->uid) && !$form_state['programmed']) {
     // Form constructors may explicitly set #token to FALSE when cross site
-    // request forgery is irrelevant to the form, such as search forms.
+    // request forgery is irrelevant to the form, such as animals_search_block forms.
     if (isset($form['#token']) && $form['#token'] === FALSE) {
       unset($form['#token']);
     }
@@ -2205,7 +2205,7 @@ function form_type_image_button_value($form, $input, $form_state) {
       // Unfortunately, in IE we never get back a proper value for THIS
       // form element. Instead, we get back two split values: one for the
       // X and one for the Y coordinates on which the user clicked the
-      // button. We'll find this element in the #post data, and search
+      // button. We'll find this element in the #post data, and animals_search_block
       // in the same spot for its name, with '_x'.
       $input = $form_state['input'];
       foreach (explode('[', $form['#name']) as $element_name) {
@@ -2718,7 +2718,7 @@ function form_select_options($element, $choices = NULL) {
  * forget to use === and !== if needed.
  *
  * @param $element
- *   The select element to search.
+ *   The select element to animals_search_block.
  * @param $key
  *   The key to look for.
  *

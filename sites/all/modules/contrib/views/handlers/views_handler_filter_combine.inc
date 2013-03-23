@@ -6,7 +6,7 @@
  */
 
 /**
- * Filter handler which allows to search on multiple fields.
+ * Filter handler which allows to animals_search_block on multiple fields.
  *
  * @ingroup views_field_handlers
  */

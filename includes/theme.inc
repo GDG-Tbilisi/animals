@@ -1275,7 +1275,7 @@ function drupal_find_theme_functions($cache, $prefixes) {
  * @param $extension
  *   The extension that these templates will have.
  * @param $path
- *   The path to search.
+ *   The path to animals_search_block.
  */
 function drupal_find_theme_templates($cache, $extension, $path) {
   $implementations = array();
@@ -1301,7 +1301,7 @@ function drupal_find_theme_templates($cache, $extension, $path) {
 
   // Escape the periods in the extension.
   $regex = '/' . str_replace('.', '\.', $extension) . '$/';
-  // Get a listing of all template files in the path to search.
+  // Get a listing of all template files in the path to animals_search_block.
   $files = drupal_system_listing($regex, $path, 'name', 0);
 
   // Find templates that implement registered theme hooks and include that in

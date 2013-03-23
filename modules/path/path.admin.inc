@@ -8,7 +8,7 @@
 /**
  * Returns a listing of all defined URL aliases.
  *
- * When filter key passed, perform a standard search on the given key,
+ * When filter key passed, perform a standard animals_search_block on the given key,
  * and return the list of matching URL aliases.
  */
 function path_admin_overview($keys = NULL) {
@@ -50,12 +50,12 @@ function path_admin_overview($keys = NULL) {
     $operations = array();
     $operations['edit'] = array(
       'title' => t('edit'),
-      'href' => "admin/config/search/path/edit/$data->pid",
+      'href' => "admin/config/animals_search_block/path/edit/$data->pid",
       'query' => $destination,
     );
     $operations['delete'] = array(
       'title' => t('delete'),
-      'href' => "admin/config/search/path/delete/$data->pid",
+      'href' => "admin/config/animals_search_block/path/delete/$data->pid",
       'query' => $destination,
     );
     $row['data']['operations'] = array(
@@ -79,7 +79,7 @@ function path_admin_overview($keys = NULL) {
     '#theme' => 'table',
     '#header' => $header,
     '#rows' => $rows,
-    '#empty' => t('No URL aliases available. <a href="@link">Add URL alias</a>.', array('@link' => url('admin/config/search/path/add'))),
+    '#empty' => t('No URL aliases available. <a href="@link">Add URL alias</a>.', array('@link' => url('admin/config/animals_search_block/path/add'))),
   );
   $build['path_pager'] = array('#theme' => 'pager');
 
@@ -180,7 +180,7 @@ function path_admin_form_delete_submit($form, &$form_state) {
     $destination = drupal_get_destination();
     unset($_GET['destination']);
   }
-  $form_state['redirect'] = array('admin/config/search/path/delete/' . $form_state['values']['pid'], array('query' => $destination));
+  $form_state['redirect'] = array('admin/config/animals_search_block/path/delete/' . $form_state['values']['pid'], array('query' => $destination));
 }
 
 /**
@@ -225,7 +225,7 @@ function path_admin_form_submit($form, &$form_state) {
   path_save($form_state['values']);
 
   drupal_set_message(t('The alias has been saved.'));
-  $form_state['redirect'] = 'admin/config/search/path';
+  $form_state['redirect'] = 'admin/config/animals_search_block/path';
 }
 
 /**
@@ -243,7 +243,7 @@ function path_admin_delete_confirm($form, &$form_state, $path) {
       $form,
       t('Are you sure you want to delete path alias %title?',
       array('%title' => $path['alias'])),
-      'admin/config/search/path'
+      'admin/config/animals_search_block/path'
     );
   }
   return array();
@@ -255,7 +255,7 @@ function path_admin_delete_confirm($form, &$form_state, $path) {
 function path_admin_delete_confirm_submit($form, &$form_state) {
   if ($form_state['values']['confirm']) {
     path_delete($form_state['path']['pid']);
-    $form_state['redirect'] = 'admin/config/search/path';
+    $form_state['redirect'] = 'admin/config/animals_search_block/path';
   }
 }
 
@@ -267,7 +267,7 @@ function path_admin_delete_confirm_submit($form, &$form_state) {
  * @see path_admin_filter_form_submit_reset()
  */
 function path_admin_filter_form($form, &$form_state, $keys = '') {
-  $form['#attributes'] = array('class' => array('search-form'));
+  $form['#attributes'] = array('class' => array('animals_search_block-form'));
   $form['basic'] = array('#type' => 'fieldset',
     '#title' => t('Filter aliases'),
     '#attributes' => array('class' => array('container-inline')),
@@ -301,7 +301,7 @@ function path_admin_filter_form($form, &$form_state, $keys = '') {
  * @see path_admin_filter_form_submit_reset()
  */
 function path_admin_filter_form_submit_filter($form, &$form_state) {
-  $form_state['redirect'] = 'admin/config/search/path/list/' . trim($form_state['values']['filter']);
+  $form_state['redirect'] = 'admin/config/animals_search_block/path/list/' . trim($form_state['values']['filter']);
 }
 
 /**
@@ -310,5 +310,5 @@ function path_admin_filter_form_submit_filter($form, &$form_state) {
  * @see path_admin_filter_form_submit_filter()
  */
 function path_admin_filter_form_submit_reset($form, &$form_state) {
-  $form_state['redirect'] = 'admin/config/search/path/list';
+  $form_state['redirect'] = 'admin/config/animals_search_block/path/list';
 }

@@ -1,0 +1,7 @@
+<?php
+    function animals_search_block(){
+        $blocks['animals_search_block'] =  array(
+            'info'=> t('info'),
+        );
+        return $blocks;
+    }

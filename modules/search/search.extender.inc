@@ -6,10 +6,10 @@
  */
 
 /**
- * Do a query on the full-text search index for a word or words.
+ * Do a query on the full-text animals_search_block index for a word or words.
  *
  * This function is normally only called by each module that supports the
- * indexed search (and thus, implements hook_update_index()).
+ * indexed animals_search_block (and thus, implements hook_update_index()).
  *
  * Results are retrieved in two logical passes. However, the two passes are
  * joined together into a single query. And in the case of most simple
@@ -26,14 +26,14 @@
  */
 class SearchQuery extends SelectQueryExtender {
   /**
-   * The search query that is used for searching.
+   * The animals_search_block query that is used for searching.
    *
    * @var string
    */
   protected $searchExpression;
 
   /**
-   * Type of search (search module).
+   * Type of animals_search_block (animals_search_block module).
    *
    * This maps to the value of the type column in search_index, and is equal
    * to the machine-readable name of the module that implements
@@ -44,7 +44,7 @@ class SearchQuery extends SelectQueryExtender {
   protected $type;
 
   /**
-   * Positive and negative search keys.
+   * Positive and negative animals_search_block keys.
    *
    * @var array
    */
@@ -68,14 +68,14 @@ class SearchQuery extends SelectQueryExtender {
   protected $conditions;
 
   /**
-   * Indicates how many matches for a search query are necessary.
+   * Indicates how many matches for a animals_search_block query are necessary.
    *
    * @var int
    */
   protected $matches = 0;
 
   /**
-   * Array of search words.
+   * Array of animals_search_block words.
    *
    * These words have to match against {search_index}.word.
    *
@@ -84,7 +84,7 @@ class SearchQuery extends SelectQueryExtender {
   protected $words = array();
 
   /**
-   * Multiplier for the normalized search score.
+   * Multiplier for the normalized animals_search_block score.
    *
    * This value is calculated by the first pass query and multiplied with the
    * actual score of a specific word to make sure that the resulting calculated
@@ -123,7 +123,7 @@ class SearchQuery extends SelectQueryExtender {
   protected $multiply = array();
 
   /**
-   * Whether or not search expressions were ignored.
+   * Whether or not animals_search_block expressions were ignored.
    *
    * The maximum number of AND/OR combinations exceeded can be configured to
    * avoid Denial-of-Service attacks. Expressions beyond the limit are ignored.
@@ -133,12 +133,12 @@ class SearchQuery extends SelectQueryExtender {
   protected $expressionsIgnored = FALSE;
 
   /**
-   * Sets up the search query expression.
+   * Sets up the animals_search_block query expression.
    *
    * @param $query
-   *   A search query string, which can contain options.
+   *   A animals_search_block query string, which can contain options.
    * @param $module
-   *   The search module. This maps to {search_index}.type in the database.
+   *   The animals_search_block module. This maps to {search_index}.type in the database.
    *
    * @return
    *   The SearchQuery object.
@@ -151,7 +151,7 @@ class SearchQuery extends SelectQueryExtender {
   }
 
   /**
-   * Applies a search option and removes it from the search query string.
+   * Applies a animals_search_block option and removes it from the animals_search_block query string.
    *
    * These options are in the form option:value,value2,value3.
    *
@@ -177,7 +177,7 @@ class SearchQuery extends SelectQueryExtender {
   }
 
   /**
-   * Parses the search query into SQL conditions.
+   * Parses the animals_search_block query into SQL conditions.
    *
    * We build two queries that match the dataset bodies.
    */
@@ -194,12 +194,12 @@ class SearchQuery extends SelectQueryExtender {
     $or = FALSE;
     $warning = '';
     $limit_combinations = variable_get('search_and_or_limit', 7);
-    // The first search expression does not count as AND.
+    // The first animals_search_block expression does not count as AND.
     $and_count = -1;
     $or_count = 0;
     foreach ($keywords as $match) {
       if ($or_count && $and_count + $or_count >= $limit_combinations) {
-        // Ignore all further search expressions to prevent Denial-of-Service
+        // Ignore all further animals_search_block expressions to prevent Denial-of-Service
         // attacks using a high number of AND/OR combinations.
         $this->expressionsIgnored = TRUE;
         break;
@@ -212,8 +212,8 @@ class SearchQuery extends SelectQueryExtender {
         $this->simple = FALSE;
       }
       // Simplify keyword according to indexing rules and external
-      // preprocessors. Use same process as during search indexing, so it
-      // will match search index.
+      // preprocessors. Use same process as during animals_search_block indexing, so it
+      // will match animals_search_block index.
       $words = search_simplify($match[2]);
       // Re-explode in case simplification added more words, except when
       // matching a phrase.
@@ -336,7 +336,7 @@ class SearchQuery extends SelectQueryExtender {
    * addScore() or execute().
    *
    * @return
-   *   TRUE if search items exist, FALSE if not.
+   *   TRUE if animals_search_block items exist, FALSE if not.
    */
   public function executeFirstPass() {
     $this->parseSearchExpression();
@@ -346,7 +346,7 @@ class SearchQuery extends SelectQueryExtender {
       return FALSE;
     }
     if ($this->expressionsIgnored) {
-      drupal_set_message(t('Your search used too many AND/OR expressions. Only the first @count terms were included in this search.', array('@count' => variable_get('search_and_or_limit', 7))), 'warning');
+      drupal_set_message(t('Your animals_search_block used too many AND/OR expressions. Only the first @count terms were included in this animals_search_block.', array('@count' => variable_get('search_and_or_limit', 7))), 'warning');
     }
     $this->executedFirstPass = TRUE;
 
@@ -368,7 +368,7 @@ class SearchQuery extends SelectQueryExtender {
     // Clone the query object to do the firstPass query;
     $first = clone $this->query;
 
-    // For complex search queries, add the LIKE conditions to the first pass query.
+    // For complex animals_search_block queries, add the LIKE conditions to the first pass query.
     if (!$this->simple) {
       $first->join('search_dataset', 'd', 'i.sid = d.sid AND i.type = d.type');
       $first->condition($this->conditions);
@@ -389,7 +389,7 @@ class SearchQuery extends SelectQueryExtender {
   }
 
   /**
-   * Adds a custom score expression to the search query.
+   * Adds a custom score expression to the animals_search_block query.
    *
    * Each score expression can optionally use a multiplier, and multiple
    * expressions are combined.
@@ -400,7 +400,7 @@ class SearchQuery extends SelectQueryExtender {
    *   Custom query arguments for that expression.
    * @param $multiply
    *   If set, the score is multiplied with that value. Search query ensures
-   *   that the search scores are still normalized.
+   *   that the animals_search_block scores are still normalized.
    */
   public function addScore($score, $arguments = array(), $multiply = FALSE) {
     if ($multiply) {
@@ -417,7 +417,7 @@ class SearchQuery extends SelectQueryExtender {
   }
 
   /**
-   * Executes the search.
+   * Executes the animals_search_block.
    *
    * If not already done, this executes the first pass query. Then the complex
    * conditions are applied to the query including score expressions and

@@ -200,9 +200,9 @@ function node_entity_info() {
     ),
   );
 
-  // Search integration is provided by node.module, so search-related
-  // view modes for nodes are defined here and not in search.module.
-  if (module_exists('search')) {
+  // Search integration is provided by node.module, so animals_search_block-related
+  // view modes for nodes are defined here and not in animals_search_block.module.
+  if (module_exists('animals_search_block')) {
     $return['node']['view modes'] += array(
       'search_index' => array(
         'label' => t('Search index'),
@@ -236,7 +236,7 @@ function node_entity_info() {
  * Implements hook_field_display_ENTITY_TYPE_alter().
  */
 function node_field_display_node_alter(&$display, $context) {
-  // Hide field labels in search index.
+  // Hide field labels in animals_search_block index.
   if ($context['view_mode'] == 'search_index') {
     $display['label'] = 'hidden';
   }
@@ -1202,11 +1202,11 @@ function node_delete_multiple($nids) {
         module_invoke_all('entity_delete', $node, 'node');
         field_attach_delete('node', $node);
 
-        // Remove this node from the search index if needed.
-        // This code is implemented in node module rather than in search module,
-        // because node module is implementing search module's API, not the other
+        // Remove this node from the animals_search_block index if needed.
+        // This code is implemented in node module rather than in animals_search_block module,
+        // because node module is implementing animals_search_block module's API, not the other
         // way around.
-        if (module_exists('search')) {
+        if (module_exists('animals_search_block')) {
           search_reindex($nid, 'node');
         }
       }
@@ -1321,9 +1321,9 @@ function node_view($node, $view_mode = 'full', $langcode = NULL) {
  *   - teaser: node is being displayed on the default home page listing, on
  *     taxonomy listing pages, or on blog listing pages.
  *   - rss: node displayed in an RSS feed.
- *   If search.module is enabled:
- *   - search_index: node is being indexed for search.
- *   - search_result: node is being displayed as a search result.
+ *   If animals_search_block.module is enabled:
+ *   - search_index: node is being indexed for animals_search_block.
+ *   - search_result: node is being displayed as a animals_search_block result.
  *   If book.module is enabled:
  *   - print: node is being displayed in print-friendly mode.
  * Contributed modules might define additional view modes, or use existing
@@ -1625,7 +1625,7 @@ function node_search_admin() {
   );
   $form['content_ranking']['#theme'] = 'node_search_admin';
   $form['content_ranking']['info'] = array(
-    '#value' => '<em>' . t('The following numbers control which properties the content search should favor when ordering the results. Higher numbers mean more influence, zero means the property is ignored. Changing these numbers does not require the search index to be rebuilt. Changes take effect immediately.') . '</em>'
+    '#value' => '<em>' . t('The following numbers control which properties the content animals_search_block should favor when ordering the results. Higher numbers mean more influence, zero means the property is ignored. Changing these numbers does not require the animals_search_block index to be rebuilt. Changes take effect immediately.') . '</em>'
   );
 
   // Note: reversed to reflect that higher number = higher ranking.
@@ -1798,7 +1798,7 @@ function node_user_delete($account) {
 }
 
 /**
- * Returns HTML for the content ranking part of the search settings admin page.
+ * Returns HTML for the content ranking part of the animals_search_block settings admin page.
  *
  * @param $variables
  *   An associative array containing:
@@ -2675,7 +2675,7 @@ function node_update_index() {
 function _node_index_node($node) {
   $node = node_load($node->nid);
 
-  // Save the changed time of the most recent indexed node, for the search
+  // Save the changed time of the most recent indexed node, for the animals_search_block
   // results half-life calculation.
   variable_set('node_cron_last', $node->changed);
 
@@ -2700,14 +2700,14 @@ function _node_index_node($node) {
  * Implements hook_form_FORM_ID_alter().
  */
 function node_form_search_form_alter(&$form, $form_state) {
-  if (isset($form['module']) && $form['module']['#value'] == 'node' && user_access('use advanced search')) {
+  if (isset($form['module']) && $form['module']['#value'] == 'node' && user_access('use advanced animals_search_block')) {
     // Keyword boxes:
     $form['advanced'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Advanced search'),
+      '#title' => t('Advanced animals_search_block'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
-      '#attributes' => array('class' => array('search-advanced')),
+      '#attributes' => array('class' => array('animals_search_block-advanced')),
     );
     $form['advanced']['keywords'] = array(
       '#prefix' => '<div class="criterion">',
@@ -2743,7 +2743,7 @@ function node_form_search_form_alter(&$form, $form_state) {
     );
     $form['advanced']['submit'] = array(
       '#type' => 'submit',
-      '#value' => t('Advanced search'),
+      '#value' => t('Advanced animals_search_block'),
       '#prefix' => '<div class="action">',
       '#suffix' => '</div>',
       '#weight' => 100,
@@ -2771,13 +2771,13 @@ function node_form_search_form_alter(&$form, $form_state) {
 }
 
 /**
- * Form API callback for the search form. Registered in node_form_alter().
+ * Form API callback for the animals_search_block form. Registered in node_form_alter().
  */
 function node_search_validate($form, &$form_state) {
-  // Initialize using any existing basic search keywords.
+  // Initialize using any existing basic animals_search_block keywords.
   $keys = $form_state['values']['processed_keys'];
 
-  // Insert extra restrictions into the search keywords string.
+  // Insert extra restrictions into the animals_search_block keywords string.
   if (isset($form_state['values']['type']) && is_array($form_state['values']['type'])) {
     // Retrieve selected types - Form API sets the value of unselected
     // checkboxes to 0.
@@ -3220,7 +3220,7 @@ function _node_query_node_access_alter($query, $type) {
 
   $tables = $query->getTables();
   $base_table = $query->getMetaData('base_table');
-  // If no base table is specified explicitly, search for one.
+  // If no base table is specified explicitly, animals_search_block for one.
   if (!$base_table) {
     $fallback = '';
     foreach ($tables as $alias => $table_info) {

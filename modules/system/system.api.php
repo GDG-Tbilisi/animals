@@ -237,9 +237,9 @@ function hook_entity_info() {
     ),
   );
 
-  // Search integration is provided by node.module, so search-related
-  // view modes for nodes are defined here and not in search.module.
-  if (module_exists('search')) {
+  // Search integration is provided by node.module, so animals_search_block-related
+  // view modes for nodes are defined here and not in animals_search_block.module.
+  if (module_exists('animals_search_block')) {
     $return['node']['view modes'] += array(
       'search_index' => array(
         'label' => t('Search index'),
@@ -3400,7 +3400,7 @@ function hook_update_N(&$sandbox) {
  * This can be used to indicate update functions from other modules that your
  * module's update functions depend on, or vice versa. It is used by the update
  * system to determine the appropriate order in which updates should be run, as
- * well as to search for missing dependencies.
+ * well as to animals_search_block for missing dependencies.
  *
  * Implementations of this hook should be placed in a mymodule.install file in
  * the same directory as mymodule.module.

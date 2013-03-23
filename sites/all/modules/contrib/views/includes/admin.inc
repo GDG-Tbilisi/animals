@@ -35,7 +35,7 @@ function views_ui_get_admin_css() {
     // Try to find the admin css file for non-core themes.
     if (!in_array($theme_key, array('garland', 'seven', 'bartik'))) {
       $theme_path = drupal_get_path('theme', $theme_key);
-      // First search in the css directory, then in the root folder of the theme.
+      // First animals_search_block in the css directory, then in the root folder of the theme.
       if (file_exists($theme_path . "/css/views-admin.$theme_key.css")) {
         $list[$theme_path . "/css/views-admin.$theme_key.css"] = array(
           'group' => CSS_THEME,
@@ -777,7 +777,7 @@ function views_ui_add_form_cancel_submit($form, &$form_state) {
 function views_ui_taxonomy_autocomplete_validate($element, &$form_state) {
   $value = array();
   if ($tags = $element['#value']) {
-    // Get the machine names of the vocabularies we will search, keyed by the
+    // Get the machine names of the vocabularies we will animals_search_block, keyed by the
     // vocabulary IDs.
     $field = field_info_field($element['#field_name']);
     $vocabularies = array();
@@ -5393,7 +5393,7 @@ function views_ui_field_list() {
   $views = views_get_all_views();
 
   // Fetch all fieldapi fields which are used in views
-  // Therefore search in all views, displays and handler-types.
+  // Therefore animals_search_block in all views, displays and handler-types.
   $fields = array();
   foreach ($views as $view) {
     foreach ($view->display as $display_id => $display) {

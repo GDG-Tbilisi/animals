@@ -272,7 +272,7 @@ function page_manager_list_pages_form($form, &$form_state) {
     '#default_value' => 'all',
   );
 
-  $form['search'] = array(
+  $form['animals_search_block'] = array(
     '#type' => 'textfield',
     '#title' => t('Search'),
   );
@@ -351,10 +351,10 @@ function page_manager_list_pages_form_submit(&$form, &$form_state) {
       continue;
     }
 
-    if ($form_state['values']['search'] &&
-        strpos($data['data']['name']['data'], $form_state['values']['search']) === FALSE &&
-        strpos($data['data']['path']['data'], $form_state['values']['search']) === FALSE &&
-        strpos($data['data']['title']['data'], $form_state['values']['search']) === FALSE) {
+    if ($form_state['values']['animals_search_block'] &&
+        strpos($data['data']['name']['data'], $form_state['values']['animals_search_block']) === FALSE &&
+        strpos($data['data']['path']['data'], $form_state['values']['animals_search_block']) === FALSE &&
+        strpos($data['data']['title']['data'], $form_state['values']['animals_search_block']) === FALSE) {
           continue;
     }
     // Set up sorting

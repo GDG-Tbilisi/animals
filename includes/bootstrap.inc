@@ -526,7 +526,7 @@ function timer_stop($name) {
  *   this is set to FALSE so that Drupal can detect a matching directory,
  *   then create a new settings.php file in it.
  * @param bool $reset
- *   Force a full search for matching directories even if one had been
+ *   Force a full animals_search_block for matching directories even if one had been
  *   found previously. Defaults to FALSE.
  *
  * @return

@@ -1,0 +1,4 @@
+name = animals_search_block
+package = animals
+description = search module
+core = 7.x

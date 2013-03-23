@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Dummy module implementing a search type for search module testing.
+ * Dummy module implementing a animals_search_block type for animals_search_block module testing.
  */
 
 /**
@@ -10,7 +10,7 @@
  */
 function search_extra_type_search_info() {
   return array(
-    'title' => 'Dummy search type',
+    'title' => 'Dummy animals_search_block type',
     'path' => 'dummy_path',
     'conditions_callback' => 'search_extra_type_conditions',
   );
@@ -31,7 +31,7 @@ function search_extra_type_conditions() {
 /**
  * Implements hook_search_execute().
  *
- * This is a dummy search, so when search "executes", we just return a dummy
+ * This is a dummy animals_search_block, so when animals_search_block "executes", we just return a dummy
  * result containing the keywords and a list of conditions.
  */
 function search_extra_type_search_execute($keys = NULL, $conditions = NULL) {
@@ -43,7 +43,7 @@ function search_extra_type_search_execute($keys = NULL, $conditions = NULL) {
       'link' => url('node'),
       'type' => 'Dummy result type',
       'title' => 'Dummy title',
-      'snippet' => "Dummy search snippet to display. Keywords: {$keys}\n\nConditions: " . print_r($conditions, TRUE),
+      'snippet' => "Dummy animals_search_block snippet to display. Keywords: {$keys}\n\nConditions: " . print_r($conditions, TRUE),
     ),
   );
 }
@@ -51,10 +51,10 @@ function search_extra_type_search_execute($keys = NULL, $conditions = NULL) {
 /**
  * Implements hook_search_page().
  *
- * Adds some text to the search page so we can verify that it runs.
+ * Adds some text to the animals_search_block page so we can verify that it runs.
  */
 function search_extra_type_search_page($results) {
-  $output['prefix']['#markup'] = '<h2>Test page text is here</h2> <ol class="search-results">';
+  $output['prefix']['#markup'] = '<h2>Test page text is here</h2> <ol class="animals_search_block-results">';
 
   foreach ($results as $entry) {
     $output[] = array(

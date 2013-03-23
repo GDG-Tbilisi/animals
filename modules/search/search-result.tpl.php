@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Default theme implementation for displaying a single search result.
+ * Default theme implementation for displaying a single animals_search_block result.
  *
- * This template renders a single search result and is collected into
- * search-results.tpl.php. This and the parent template are
+ * This template renders a single animals_search_block result and is collected into
+ * animals_search_block-results.tpl.php. This and the parent template are
  * dependent to one another sharing the markup for definition lists.
  *
  * Available variables:

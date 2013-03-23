@@ -383,7 +383,7 @@ class ViewsUiBaseViewsWizard implements ViewsWizardInterface {
       if (!empty($entity_info['fieldable'])) {
         // Find all "tag-like" taxonomy fields associated with the view's
         // entities. If a particular entity type (i.e., bundle) has been
-        // selected above, then we only search for taxonomy fields associated
+        // selected above, then we only animals_search_block for taxonomy fields associated
         // with that bundle. Otherwise, we use all bundles.
         $bundles = array_keys($entity_info['bundles']);
         // Double check that this is a real bundle before using it (since above

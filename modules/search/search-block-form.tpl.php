@@ -2,26 +2,26 @@
 
 /**
  * @file
- * Displays the search form block.
+ * Displays the animals_search_block form block.
  *
  * Available variables:
- * - $search_form: The complete search form ready for print.
- * - $search: Associative array of search elements. Can be used to print each
+ * - $search_form: The complete animals_search_block form ready for print.
+ * - $animals_search_block: Associative array of animals_search_block elements. Can be used to print each
  *   form element separately.
  *
- * Default elements within $search:
- * - $search['search_block_form']: Text input area wrapped in a div.
- * - $search['actions']: Rendered form buttons.
- * - $search['hidden']: Hidden form elements. Used to validate forms when
+ * Default elements within $animals_search_block:
+ * - $animals_search_block['search_block_form']: Text input area wrapped in a div.
+ * - $animals_search_block['actions']: Rendered form buttons.
+ * - $animals_search_block['hidden']: Hidden form elements. Used to validate forms when
  *   submitted.
  *
- * Modules can add to the search form, so it is recommended to check for their
+ * Modules can add to the animals_search_block form, so it is recommended to check for their
  * existence before printing. The default keys will always exist. To check for
  * a module-provided field, use code like this:
  * @code
- *   <?php if (isset($search['extra_field'])): ?>
+ *   <?php if (isset($animals_search_block['extra_field'])): ?>
  *     <div class="extra-field">
- *       <?php print $search['extra_field']; ?>
+ *       <?php print $animals_search_block['extra_field']; ?>
  *     </div>
  *   <?php endif; ?>
  * @endcode

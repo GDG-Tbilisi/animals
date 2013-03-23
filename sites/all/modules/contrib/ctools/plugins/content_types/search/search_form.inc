@@ -1,15 +1,15 @@
 <?php
 
-if (module_exists('search')) {
+if (module_exists('animals_search_block')) {
   /**
    * Plugins are described by creating a $plugin array which will be used
    * by the system that includes this file.
    */
   $plugin = array(
     'single' => TRUE,
-    'title' => t('Advanced search form'),
+    'title' => t('Advanced animals_search_block form'),
     'icon' => 'icon_search.png',
-    'description' => t('A search form with advanced options.'),
+    'description' => t('A animals_search_block form with advanced options.'),
     'required context' => new ctools_context_optional(t('Keywords'), 'string'),
     'category' => t('Widgets'),
     'defaults' => array(
@@ -36,14 +36,14 @@ function ctools_search_form_content_type_render($subtype, $conf, $panel_args, $c
 
   // Build the content type block.
   $block = new stdClass();
-  $block->module  = 'search';
+  $block->module  = 'animals_search_block';
   $block->delta   = 'form';
   $block->title   = '';
 
   switch ($conf['path_type']) {
     default:
     case 'default':
-      $path = 'search/' . $conf['type'];
+      $path = 'animals_search_block/' . $conf['type'];
       break;
     case 'same':
       $path = $_GET['q'];
@@ -62,7 +62,7 @@ function ctools_search_form_content_type_render($subtype, $conf, $panel_args, $c
     ),
   );
 
-  module_load_include('inc', 'search', 'search.pages');
+  module_load_include('inc', 'animals_search_block', 'animals_search_block.pages');
 
   $block->content = drupal_build_form('search_form', $form_state);
   if ($conf['form'] == 'simple' && isset($block->content['advanced'])) {
@@ -98,7 +98,7 @@ function ctools_search_form_content_type_edit_form($form, &$form_state) {
       'advanced' => t('Advanced'),
     ),
     '#default_value' => $conf['form'],
-    '#description' => t('The advanced form may have additional options based upon the search type. For example the advanced content (node) search form will allow searching by node type and taxonomy term.'),
+    '#description' => t('The advanced form may have additional options based upon the animals_search_block type. For example the advanced content (node) animals_search_block form will allow searching by node type and taxonomy term.'),
   );
 
   $form['path_type'] = array(
@@ -137,7 +137,7 @@ function ctools_search_form_content_type_edit_form($form, &$form_state) {
 }
 
 /**
- * Submit handler for search form.
+ * Submit handler for animals_search_block form.
  */
 function ctools_search_form_content_type_edit_form_submit($form, &$form_state) {
   // Copy everything from our defaults.
@@ -152,5 +152,5 @@ function ctools_search_form_content_type_edit_form_submit($form, &$form_state) {
 function ctools_search_form_content_type_admin_title($subtype, $conf, $context) {
   $info = search_get_info();
   $type = isset($info[$conf['type']]['title']) ? $info[$conf['type']]['title'] : t('Missing/broken type');
-  return t('@type search form', array('@type' => $type));
+  return t('@type animals_search_block form', array('@type' => $type));
 }

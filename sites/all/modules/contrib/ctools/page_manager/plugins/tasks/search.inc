@@ -14,7 +14,7 @@
  * more information.
  */
 function page_manager_search_page_manager_tasks() {
-  if (!module_exists('search')) {
+  if (!module_exists('animals_search_block')) {
     return;
   }
 
@@ -23,7 +23,7 @@ function page_manager_search_page_manager_tasks() {
     'task type' => 'page',
     'title' => t('Search'),
 
-    // There are multiple search pages, let's override each of them
+    // There are multiple animals_search_block pages, let's override each of them
     // separately.
     'subtasks' => TRUE,
     'subtask callback' => 'page_manager_search_subtask',
@@ -45,20 +45,20 @@ function page_manager_search_page_manager_tasks() {
 /**
  * Callback defined by page_manager_search_page_manager_tasks().
  *
- * Alter the search tabs to work with page manager. The search flow is
+ * Alter the animals_search_block tabs to work with page manager. The animals_search_block flow is
  * quite odd, and tracing through the code takes hours to realize
  * that the tab you click on does not normally actually handle
- * the search. This tries to account for that.
+ * the animals_search_block. This tries to account for that.
  *
  * Note to module authors: This tends to work a lot better with modules
- * that override their own search pages if their _alter runs *before*
+ * that override their own animals_search_block pages if their _alter runs *before*
  * this one.
  */
 function page_manager_search_menu_alter(&$items, $task) {
   // We are creating two sets of tabs. One set is for searching without
   // keywords. A second set is for searching *with* keywords. This
-  // is necessary because search/node/% and search/node need to be
-  // different due to the way the search menu items function.
+  // is necessary because animals_search_block/node/% and animals_search_block/node need to be
+  // different due to the way the animals_search_block menu items function.
 
   $default_info = search_get_default_module_info();
   if (empty($default_info)) {
@@ -66,13 +66,13 @@ function page_manager_search_menu_alter(&$items, $task) {
     return;
   }
 
-  // Go through each search module item.
+  // Go through each animals_search_block module item.
   foreach (search_get_info() as $module => $info) {
     if (variable_get('page_manager_search_disabled_' . $module, TRUE)) {
       continue;
     }
 
-    $path = 'search/' . $info['path'];
+    $path = 'animals_search_block/' . $info['path'];
     $callback = $items["$path/%menu_tail"]['page callback'];
 
     if ($callback == 'search_view' || variable_get('page_manager_override_anyway', FALSE)) {
@@ -95,12 +95,12 @@ function page_manager_search_menu_alter(&$items, $task) {
 }
 
 /**
- * Entry point for our overridden search page.
+ * Entry point for our overridden animals_search_block page.
  *
  */
 function page_manager_search_page($type) {
   ctools_include('menu');
-//  menu_set_active_trail(ctools_get_menu_trail('search/' . $type));
+//  menu_set_active_trail(ctools_get_menu_trail('animals_search_block/' . $type));
 
   // Get the arguments and construct a keys string out of them.
   $args = func_get_args();
@@ -111,11 +111,11 @@ function page_manager_search_page($type) {
   // And implode() it all back together.
   $keys = $args ? implode('/', $args) : '';
 
-  // Allow other modules to alter the search keys
+  // Allow other modules to alter the animals_search_block keys
   drupal_alter(array('search_keys', 'search_'. $type .'_keys'), $keys);
 
   // Load my task plugin
-  $task = page_manager_get_task('search');
+  $task = page_manager_get_task('animals_search_block');
   $subtask = page_manager_get_task_subtask($task, $type);
 
   // Load the node into a context.
@@ -131,7 +131,7 @@ function page_manager_search_page($type) {
   $function = 'search_view';
   foreach (module_implements('page_manager_override') as $module) {
     $call = $module . '_page_manager_override';
-    if (($rc = $call('search')) && function_exists($rc)) {
+    if (($rc = $call('animals_search_block')) && function_exists($rc)) {
       $function = $rc;
       break;
     }
@@ -140,7 +140,7 @@ function page_manager_search_page($type) {
   // Otherwise, fall back.
 
   // Put the $type back on the arguments.
-  module_load_include('inc', 'search', 'search.pages');
+  module_load_include('inc', 'animals_search_block', 'animals_search_block.pages');
   array_unshift($args, $type);
   return call_user_func_array($function, $args);
 }
@@ -214,7 +214,7 @@ function page_manager_search_subtask($task, $subtask_id) {
 function page_manager_search_build_subtask($task, $module) {
   $search_info = search_get_info();
   $info = $search_info[$module];
-  $path = 'search/' . $info['path'];
+  $path = 'animals_search_block/' . $info['path'];
   $subtask = array(
     'name' => $module,
     'admin title' => $info['title'],

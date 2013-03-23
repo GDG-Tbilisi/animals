@@ -444,7 +444,7 @@ class DatabaseStatement_sqlite extends DatabaseStatementPrefetch implements Iter
             if ($placeholder[0] != ':') {
               $placeholder = ":$placeholder";
             }
-            // When replacing the placeholders, make sure we search for the
+            // When replacing the placeholders, make sure we animals_search_block for the
             // exact placeholder. For example, if searching for
             // ':db_placeholder_1', do not replace ':db_placeholder_11'.
             $query = preg_replace('/' . preg_quote($placeholder) . '\b/', $value, $query);

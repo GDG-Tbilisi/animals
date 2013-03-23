@@ -13,7 +13,7 @@ function search_views_default_views() {
 
   $view = new view;
   $view->name = 'backlinks';
-  $view->description = 'Displays a list of nodes that link to the node, using the search backlinks table.';
+  $view->description = 'Displays a list of nodes that link to the node, using the animals_search_block backlinks table.';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Backlinks';

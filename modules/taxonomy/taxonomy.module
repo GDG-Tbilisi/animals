@@ -1053,7 +1053,7 @@ function taxonomy_get_parents_all($tid) {
  * @param $tid
  *   A taxonomy term ID.
  * @param $vid
- *   An optional vocabulary ID to restrict the child search.
+ *   An optional vocabulary ID to restrict the child animals_search_block.
  *
  * @return
  *   An array of term objects that are the children of the term $tid, or an
@@ -1205,9 +1205,9 @@ function taxonomy_get_tree($vid, $parent = 0, $max_depth = NULL, $load_entities 
  * likelihood of a successful match.
  *
  * @param $name
- *   Name of the term to search for.
+ *   Name of the term to animals_search_block for.
  * @param $vocabulary
- *   (optional) Vocabulary machine name to limit the search. Defaults to NULL.
+ *   (optional) Vocabulary machine name to limit the animals_search_block. Defaults to NULL.
  *
  * @return
  *   An array of matching term objects.

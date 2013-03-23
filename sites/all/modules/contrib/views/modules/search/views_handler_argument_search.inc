@@ -6,7 +6,7 @@
  */
 
 /**
- * Argument that accepts query keys for search.
+ * Argument that accepts query keys for animals_search_block.
  *
  * @ingroup views_argument_handlers
  */
@@ -16,7 +16,7 @@ class views_handler_argument_search extends views_handler_argument {
    * Take sure that parseSearchExpression is runned and everything is set up for it.
    *
    * @param $input
-   *    The search phrase which was input by the user.
+   *    The animals_search_block phrase which was input by the user.
    */
   function query_parse_search_expression($input) {
     if (!isset($this->search_query)) {

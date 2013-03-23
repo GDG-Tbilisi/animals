@@ -130,7 +130,7 @@ class Updater {
    * first one it finds.  Not ideal, but needs a larger solution.
    *
    * @param string $directory
-   *   Directory to search in.
+   *   Directory to animals_search_block in.
    *
    * @return string
    *   Path to the info file.
@@ -170,7 +170,7 @@ class Updater {
    * Return the project name from a Drupal info file.
    *
    * @param string $directory
-   *   Directory to search for the info file.
+   *   Directory to animals_search_block for the info file.
    *
    * @return string
    *   The title of the project.

@@ -673,7 +673,7 @@ function drupal_encode_path($path) {
  *   and the
  *   @link http://tools.ietf.org/html/draft-reschke-http-status-308-07 draft for the new HTTP status codes: @endlink
  *   - 301: Moved Permanently (the recommended value for most redirects).
- *   - 302: Found (default in Drupal and PHP, sometimes used for spamming search
+ *   - 302: Found (default in Drupal and PHP, sometimes used for spamming animals_search_block
  *     engines).
  *   - 303: See Other.
  *   - 304: Not Modified.
@@ -2572,7 +2572,7 @@ function drupal_deliver_html_page($page_callback_result) {
     drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
   }
 
-  // Send appropriate HTTP-Header for browsers and search engines.
+  // Send appropriate HTTP-Header for browsers and animals_search_block engines.
   global $language;
   drupal_add_http_header('Content-Language', $language->language);
 
@@ -5277,7 +5277,7 @@ function drupal_cron_cleanup() {
  * @code
  * drupal_system_listing("/\.module$/", "modules", 'name', 0);
  * @endcode
- * this function will search the site-wide modules directory (i.e., /modules/),
+ * this function will animals_search_block the site-wide modules directory (i.e., /modules/),
  * your installation profile's directory (i.e.,
  * /profiles/your_site_profile/modules/), the all-sites directory (i.e.,
  * /sites/all/modules/), and your site-specific directory (i.e.,
@@ -5287,7 +5287,7 @@ function drupal_cron_cleanup() {
  * The information is returned in an associative array, which can be keyed on
  * the file name ($key = 'filename'), the file name without the extension ($key
  * = 'name'), or the full file stream URI ($key = 'uri'). If you use a key of
- * 'filename' or 'name', files found later in the search will take precedence
+ * 'filename' or 'name', files found later in the animals_search_block will take precedence
  * over files found earlier (unless they belong to a module or theme not
  * compatible with Drupal core); if you choose a key of 'uri', you will get all
  * files found.
@@ -5296,7 +5296,7 @@ function drupal_cron_cleanup() {
  *   The preg_match() regular expression for the files to find.
  * @param string $directory
  *   The subdirectory name in which the files are found. For example,
- *   'modules' will search in sub-directories of the top-level /modules
+ *   'modules' will animals_search_block in sub-directories of the top-level /modules
  *   directory, sub-directories of /sites/all/modules/, etc.
  * @param string $key
  *   The key to be used for the associative array returned. Possible values are
@@ -5345,7 +5345,7 @@ function drupal_system_listing($mask, $directory, $key = 'name', $min_depth = 1)
     }
   }
 
-  // Always search sites/all/* as well as the global directories.
+  // Always animals_search_block sites/all/* as well as the global directories.
   $searchdir[] = 'sites/all/' . $directory;
 
   if (file_exists("$config/$directory")) {
@@ -5359,7 +5359,7 @@ function drupal_system_listing($mask, $directory, $key = 'name', $min_depth = 1)
   foreach ($searchdir as $dir) {
     $files_to_add = file_scan_directory($dir, $mask, array('key' => $key, 'min_depth' => $min_depth));
 
-    // Duplicate files found in later search directories take precedence over
+    // Duplicate files found in later animals_search_block directories take precedence over
     // earlier ones, so we want them to overwrite keys in our resulting
     // $files array.
     // The exception to this is if the later file is from a module or theme not
@@ -5374,7 +5374,7 @@ function drupal_system_listing($mask, $directory, $key = 'name', $min_depth = 1)
         $info = drupal_parse_info_file($info_file);
 
         // If the module or theme is incompatible with Drupal core, remove it
-        // from the array for the current search directory, so it is not
+        // from the array for the current animals_search_block directory, so it is not
         // overwritten when merged with the $files array.
         if (isset($info['core']) && $info['core'] != DRUPAL_CORE_COMPATIBILITY) {
           unset($files_to_add[$file_key]);

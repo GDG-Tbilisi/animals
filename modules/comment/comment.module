@@ -669,8 +669,8 @@ function comment_node_view($node, $view_mode) {
     elseif ($view_mode != 'search_index' && $view_mode != 'search_result') {
       // Node in other view modes: add a "post comment" link if the user is
       // allowed to post comments and if this node is allowing new comments.
-      // But we don't want this link if we're building the node for search
-      // indexing or constructing a search result excerpt.
+      // But we don't want this link if we're building the node for animals_search_block
+      // indexing or constructing a animals_search_block result excerpt.
       if ($node->comment == COMMENT_NODE_OPEN) {
         $comment_form_location = variable_get('comment_form_location_' . $node->type, COMMENT_FORM_BELOW);
         if (user_access('post comments')) {
@@ -1333,17 +1333,17 @@ function comment_node_update_index($node) {
   $index_comments = &drupal_static(__FUNCTION__);
 
   if ($index_comments === NULL) {
-    // Find and save roles that can 'access comments' or 'search content'.
-    $perms = array('access comments' => array(), 'search content' => array());
-    $result = db_query("SELECT rid, permission FROM {role_permission} WHERE permission IN ('access comments', 'search content')");
+    // Find and save roles that can 'access comments' or 'animals_search_block content'.
+    $perms = array('access comments' => array(), 'animals_search_block content' => array());
+    $result = db_query("SELECT rid, permission FROM {role_permission} WHERE permission IN ('access comments', 'animals_search_block content')");
     foreach ($result as $record) {
       $perms[$record->permission][$record->rid] = $record->rid;
     }
 
-    // Prevent indexing of comments if there are any roles that can search but
+    // Prevent indexing of comments if there are any roles that can animals_search_block but
     // not view comments.
     $index_comments = TRUE;
-    foreach ($perms['search content'] as $rid) {
+    foreach ($perms['animals_search_block content'] as $rid) {
       if (!isset($perms['access comments'][$rid]) && ($rid <= DRUPAL_AUTHENTICATED_RID || !isset($perms['access comments'][DRUPAL_AUTHENTICATED_RID]))) {
         $index_comments = FALSE;
         break;
@@ -1375,7 +1375,7 @@ function comment_update_index() {
 /**
  * Implements hook_node_search_result().
  *
- * Formats a comment count string and returns it, for display with search
+ * Formats a comment count string and returns it, for display with animals_search_block
  * results.
  */
 function comment_node_search_result($node) {

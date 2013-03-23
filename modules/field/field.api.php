@@ -802,7 +802,7 @@ function hook_field_widget_info_alter(&$info) {
  * invoke this hook as many times as needed.
  *
  * Note that, depending on the context in which the widget is being included
- * (regular entity form, field configuration form, advanced search form...),
+ * (regular entity form, field configuration form, advanced animals_search_block form...),
  * the values for $field and $instance might be different from the "official"
  * definitions returned by field_info_field() and field_info_instance().
  * Examples: mono-value widget even if the field is multi-valued, non-required
@@ -2299,7 +2299,7 @@ function hook_field_info_max_weight($entity_type, $bundle, $context) {
  * @see hook_field_display_ENTITY_TYPE_alter()
  */
 function hook_field_display_alter(&$display, $context) {
-  // Leave field labels out of the search index.
+  // Leave field labels out of the animals_search_block index.
   // Note: The check against $context['entity_type'] == 'node' could be avoided
   // by using hook_field_display_node_alter() instead of
   // hook_field_display_alter(), resulting in less function calls when
@@ -2334,7 +2334,7 @@ function hook_field_display_alter(&$display, $context) {
  * @see hook_field_display_alter()
  */
 function hook_field_display_ENTITY_TYPE_alter(&$display, $context) {
-  // Leave field labels out of the search index.
+  // Leave field labels out of the animals_search_block index.
   if ($context['view_mode'] == 'search_index') {
     $display['label'] = 'hidden';
   }

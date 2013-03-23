@@ -501,7 +501,7 @@ function ctools_plugin_load_includes($info, $filename = NULL) {
 }
 
 /**
- * Get a list of directories to search for plugins of the given type.
+ * Get a list of directories to animals_search_block for plugins of the given type.
  *
  * This utilizes hook_ctools_plugin_directory() to determine a complete list of
  * directories. Only modules that implement this hook and return a string
@@ -511,7 +511,7 @@ function ctools_plugin_load_includes($info, $filename = NULL) {
  *   The $info array for the plugin as returned by ctools_plugin_get_info().
  *
  * @return array $directories
- *   An array of directories to search.
+ *   An array of directories to animals_search_block.
  */
 function ctools_plugin_get_directories($info) {
   $directories = array();
@@ -550,7 +550,7 @@ function _ctools_list_themes() {
     $themes = $active = array();
     $all_themes = list_themes();
     foreach ($all_themes as $name => $theme) {
-      // Only search from active themes
+      // Only animals_search_block from active themes
       if (empty($theme->status) && $theme->name != $current) {
         continue;
       }

@@ -2,18 +2,18 @@
 
 /**
  * @file
- * Default theme implementation for displaying search results.
+ * Default theme implementation for displaying animals_search_block results.
  *
  * This template collects each invocation of theme_search_result(). This and
  * the child template are dependent to one another sharing the markup for
  * definition lists.
  *
- * Note that modules may implement their own search type and theme function
+ * Note that modules may implement their own animals_search_block type and theme function
  * completely bypassing this template.
  *
  * Available variables:
  * - $search_results: All results as it is rendered through
- *   search-result.tpl.php
+ *   animals_search_block-result.tpl.php
  * - $module: The machine-readable name of the module (tab) being searched, such
  *   as "node" or "user".
  *
@@ -30,6 +30,6 @@
   </ol>
   <?php print $pager; ?>
 <?php else : ?>
-  <h2><?php print t('Your search yielded no results');?></h2>
-  <?php print search_help('search#noresults', drupal_help_arg()); ?>
+  <h2><?php print t('Your animals_search_block yielded no results');?></h2>
+  <?php print search_help('animals_search_block#noresults', drupal_help_arg()); ?>
 <?php endif; ?>

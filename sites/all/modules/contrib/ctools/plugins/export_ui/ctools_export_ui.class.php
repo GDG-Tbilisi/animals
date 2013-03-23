@@ -221,7 +221,7 @@ class ctools_export_ui {
    *
    * This handles the very default conditions, and most lists are expected
    * to override this and call through to parent::list_form() in order to
-   * get the base form and then modify it as necessary to add search
+   * get the base form and then modify it as necessary to add animals_search_block
    * gadgets for custom fields.
    */
   function list_form(&$form, &$form_state) {
@@ -274,7 +274,7 @@ class ctools_export_ui {
       '#default_value' => 'all',
     );
 
-    $form['top row']['search'] = array(
+    $form['top row']['animals_search_block'] = array(
       '#type' => 'textfield',
       '#title' => t('Search'),
     );
@@ -391,8 +391,8 @@ class ctools_export_ui {
       return TRUE;
     }
 
-    if ($form_state['values']['search']) {
-      $search = strtolower($form_state['values']['search']);
+    if ($form_state['values']['animals_search_block']) {
+      $search = strtolower($form_state['values']['animals_search_block']);
       foreach ($this->list_search_fields() as $field) {
         if (strpos(strtolower($item->$field), $search) !== FALSE) {
           $hit = TRUE;
@@ -406,10 +406,10 @@ class ctools_export_ui {
   }
 
   /**
-   * Provide a list of fields to test against for the default "search" widget.
+   * Provide a list of fields to test against for the default "animals_search_block" widget.
    *
-   * This widget will search against whatever fields are configured here. By
-   * default it will attempt to search against the name, title and description fields.
+   * This widget will animals_search_block against whatever fields are configured here. By
+   * default it will attempt to animals_search_block against the name, title and description fields.
    */
   function list_search_fields() {
     $fields = array(

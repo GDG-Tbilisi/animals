@@ -1595,7 +1595,7 @@ function system_site_information_settings_validate($form, &$form_state) {
  */
 function system_cron_settings() {
   $form['description'] = array(
-    '#markup' => '<p>' . t('Cron takes care of running periodic tasks like checking for updates and indexing content for search.') . '</p>',
+    '#markup' => '<p>' . t('Cron takes care of running periodic tasks like checking for updates and indexing content for animals_search_block.') . '</p>',
   );
   $form['run'] = array(
     '#type' => 'submit',
@@ -2224,7 +2224,7 @@ function system_clean_url_settings($form, &$form_state) {
     $available = TRUE;
   }
   else {
-    $request = drupal_http_request($GLOBALS['base_url'] . '/admin/config/search/clean-urls/check');
+    $request = drupal_http_request($GLOBALS['base_url'] . '/admin/config/animals_search_block/clean-urls/check');
     // If the request returns HTTP 200, clean URLs are available.
     if (isset($request->code) && $request->code == 200) {
       $available = TRUE;
@@ -2264,14 +2264,14 @@ function system_clean_url_settings($form, &$form_state) {
     if ($conflict) {
       // $form_state['redirect'] needs to be set to the non-clean URL,
       // otherwise the setting is not saved.
-      $form_state['redirect'] = url('', array('query' => array('q' => '/admin/config/search/clean-urls')));
+      $form_state['redirect'] = url('', array('query' => array('q' => '/admin/config/animals_search_block/clean-urls')));
     }
   }
   // Show the clean URLs test form.
   else {
     drupal_add_js(drupal_get_path('module', 'system') . '/system.js');
 
-    $form_state['redirect'] = url('admin/config/search/clean-urls');
+    $form_state['redirect'] = url('admin/config/animals_search_block/clean-urls');
     $form['clean_url_description'] = array(
       '#type' => 'markup',
       '#markup' => '<p>' . t('Use URLs like <code>example.com/user</code> instead of <code>example.com/?q=user</code>.'),

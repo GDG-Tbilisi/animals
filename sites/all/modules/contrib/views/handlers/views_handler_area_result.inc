@@ -81,7 +81,7 @@ class views_handler_area_result extends views_handler_area {
       $end = $total_count;
     }
     $current_record_count = ($end - $start) + 1;
-    // Get the search information.
+    // Get the animals_search_block information.
     $items = array('start', 'end', 'total', 'name', 'per_page', 'current_page', 'current_record_count', 'page_count');
     $replacements = array();
     foreach ($items as $item) {

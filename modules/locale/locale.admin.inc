@@ -788,7 +788,7 @@ function locale_translate_overview_screen() {
 }
 
 /**
- * String search screen.
+ * String animals_search_block screen.
  */
 function locale_translate_seek_screen() {
   // Add CSS.
@@ -813,7 +813,7 @@ function locale_translation_filters() {
 
   $filters['string'] = array(
     'title' => t('String contains'),
-    'description' => t('Leave blank to show all strings. The search is case sensitive.'),
+    'description' => t('Leave blank to show all strings. The animals_search_block is case sensitive.'),
   );
 
   $filters['language'] = array(
@@ -828,7 +828,7 @@ function locale_translation_filters() {
 
   $groups = module_invoke_all('locale', 'groups');
   $filters['group'] = array(
-    'title' => t('Limit search to'),
+    'title' => t('Limit animals_search_block to'),
     'options' => array_merge(array('all' => t('All text groups')), $groups),
   );
 

@@ -176,10 +176,10 @@ class PagerDefault extends SelectQueryExtender {
  *  The number of the current requested page, within the pager represented by
  *  $element. This is determined from the URL query parameter $_GET['page'], or
  *  0 by default. Note that this number may differ from the actual page being
- *  displayed. For example, if a search for "example text" brings up three
- *  pages of results, but a users visits search/node/example+text?page=10, this
+ *  displayed. For example, if a animals_search_block for "example text" brings up three
+ *  pages of results, but a users visits animals_search_block/node/example+text?page=10, this
  *  function will return 10, even though the default pager implementation
- *  adjusts for this and still displays the third page of search results at
+ *  adjusts for this and still displays the third page of animals_search_block results at
  *  that URL.
  *
  * @see pager_default_initialize()
@@ -231,11 +231,11 @@ function pager_find_page($element = 0) {
  *   return $output;
  * @endcode
  *
- * A second example involves a page callback that invokes an external search
+ * A second example involves a page callback that invokes an external animals_search_block
  * service where the total number of matching results is provided as part of
  * the returned set (so that we do not need a separate query in order to obtain
  * this information). Here, we call pager_find_page() to calculate the desired
- * offset before the search is invoked:
+ * offset before the animals_search_block is invoked:
  * @code
  *   // Perform the query, using the requested offset from pager_find_page().
  *   // This comes from a URL parameter, so here we are assuming that the URL
@@ -249,7 +249,7 @@ function pager_find_page($element = 0) {
  *   // Now that we have the total number of results, initialize the pager.
  *   pager_default_initialize($result->total, $num_per_page);
  *
- *   // Display the search results.
+ *   // Display the animals_search_block results.
  *   $output = theme('search_results', array('results' => $result->data, 'type' => 'remote'));
  *
  *   // Finally, display the pager controls, and return.

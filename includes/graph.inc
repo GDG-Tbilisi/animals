@@ -7,7 +7,7 @@
 
 
 /**
- * Performs a depth-first search and sort on a directed acyclic graph.
+ * Performs a depth-first animals_search_block and sort on a directed acyclic graph.
  *
  * @param $graph
  *   A three dimensional associated array, with the first keys being the names
@@ -46,13 +46,13 @@
  */
 function drupal_depth_first_search(&$graph) {
   $state = array(
-    // The order of last visit of the depth first search. This is the reverse
+    // The order of last visit of the depth first animals_search_block. This is the reverse
     // of the topological order if the graph is acyclic.
     'last_visit_order' => array(),
     // The components of the graph.
     'components' => array(),
   );
-  // Perform the actual search.
+  // Perform the actual animals_search_block.
   foreach ($graph as $start => $data) {
     _drupal_depth_first_search($graph, $state, $start);
   }
@@ -72,7 +72,7 @@ function drupal_depth_first_search(&$graph) {
 }
 
 /**
- * Performs a depth-first search on a graph.
+ * Performs a depth-first animals_search_block on a graph.
  *
  * @param $graph
  *   A three dimensional associated graph array.

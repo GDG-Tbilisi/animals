@@ -180,7 +180,7 @@ Drupal.jsAC.prototype.hidePopup = function (keycode) {
 };
 
 /**
- * Positions the suggestions popup and starts a search.
+ * Positions the suggestions popup and starts a animals_search_block.
  */
 Drupal.jsAC.prototype.populatePopup = function () {
   var $input = $(this.input);
@@ -200,7 +200,7 @@ Drupal.jsAC.prototype.populatePopup = function () {
   });
   $input.before(this.popup);
 
-  // Do search.
+  // Do animals_search_block.
   this.db.owner = this;
   this.db.search(this.input.value);
 };
@@ -264,7 +264,7 @@ Drupal.ACDB = function (uri) {
 };
 
 /**
- * Performs a cached and delayed search.
+ * Performs a cached and delayed animals_search_block.
  */
 Drupal.ACDB.prototype.search = function (searchString) {
   var db = this;
@@ -282,7 +282,7 @@ Drupal.ACDB.prototype.search = function (searchString) {
     return this.owner.found(this.cache[searchString]);
   }
 
-  // Initiate delayed search.
+  // Initiate delayed animals_search_block.
   if (this.timer) {
     clearTimeout(this.timer);
   }
@@ -290,7 +290,7 @@ Drupal.ACDB.prototype.search = function (searchString) {
     db.owner.setStatus('begin');
 
     // Ajax GET request for autocompletion. We use Drupal.encodePath instead of
-    // encodeURIComponent to allow autocomplete search terms to contain slashes.
+    // encodeURIComponent to allow autocomplete animals_search_block terms to contain slashes.
     $.ajax({
       type: 'GET',
       url: db.uri + '/' + Drupal.encodePath(searchString),

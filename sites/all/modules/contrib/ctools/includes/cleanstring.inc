@@ -31,7 +31,7 @@
  *   Nd  Number, Decimal Digit
  *   No  Number, Other
  *
- * Copied from search.module's PREG_CLASS_SEARCH_EXCLUDE.
+ * Copied from animals_search_block.module's PREG_CLASS_SEARCH_EXCLUDE.
  */
 define('CTOOLS_PREG_CLASS_ALNUM',
 '\x{0}-\x{2f}\x{3a}-\x{40}\x{5b}-\x{60}\x{7b}-\x{bf}\x{d7}\x{f7}\x{2b0}-' .

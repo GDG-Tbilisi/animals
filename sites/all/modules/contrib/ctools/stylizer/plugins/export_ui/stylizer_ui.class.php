@@ -85,7 +85,7 @@ class stylizer_ui extends ctools_export_ui {
     }
 
     // This isn't really a field, but by setting this we can list it in the
-    // filter fields and have the search box pick it up.
+    // filter fields and have the animals_search_block box pick it up.
     $item->plugin_title = $this->style_plugin['title'];
 
     if ($form_state['values']['type'] != 'all') {

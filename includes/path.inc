@@ -34,8 +34,8 @@ function drupal_path_initialize() {
  * @param $path
  *   The path to investigate for corresponding aliases or system URLs.
  * @param $path_language
- *   Optional language code to search the path with. Defaults to the page language.
- *   If there's no path defined for that language it will search paths without
+ *   Optional language code to animals_search_block the path with. Defaults to the page language.
+ *   If there's no path defined for that language it will animals_search_block paths without
  *   language.
  *
  * @return

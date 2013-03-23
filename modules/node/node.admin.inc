@@ -148,7 +148,7 @@ function node_filter_form() {
   foreach ($session as $filter) {
     list($type, $value) = $filter;
     if ($type == 'term') {
-      // Load term name from DB rather than search and parse options array.
+      // Load term name from DB rather than animals_search_block and parse options array.
       $value = module_invoke('taxonomy', 'term_load', $value);
       $value = $value->name;
     }

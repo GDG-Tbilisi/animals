@@ -69,12 +69,12 @@ function dblog_menu() {
     'file' => 'dblog.admin.inc',
   );
 
-  if (module_exists('search')) {
-    $items['admin/reports/search'] = array(
-      'title' => 'Top search phrases',
-      'description' => 'View most popular search phrases.',
+  if (module_exists('animals_search_block')) {
+    $items['admin/reports/animals_search_block'] = array(
+      'title' => 'Top animals_search_block phrases',
+      'description' => 'View most popular animals_search_block phrases.',
       'page callback' => 'dblog_top',
-      'page arguments' => array('search'),
+      'page arguments' => array('animals_search_block'),
       'access arguments' => array('access site reports'),
       'file' => 'dblog.admin.inc',
     );

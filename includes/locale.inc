@@ -1835,16 +1835,16 @@ function _locale_export_remove_plural($entry) {
  */
 
 /**
- * @defgroup locale-api-seek Translation search API
+ * @defgroup locale-api-seek Translation animals_search_block API
  * @{
- * Functions to search in translation files.
+ * Functions to animals_search_block in translation files.
  *
- * These functions provide the functionality to search for specific
+ * These functions provide the functionality to animals_search_block for specific
  * translations.
  */
 
 /**
- * Perform a string search and display results in a table
+ * Perform a string animals_search_block and display results in a table
  */
 function _locale_translate_seek() {
   $output = '';
@@ -1891,7 +1891,7 @@ function _locale_translate_seek() {
       $condition = db_or()
         ->condition('s.source', '%' . db_like($query['string']) . '%', 'LIKE');
       if ($query['language'] != 'en') {
-        // Only search in translations if the language is not forced to English.
+        // Only animals_search_block in translations if the language is not forced to English.
         $condition->condition('t.translation', '%' . db_like($query['string']) . '%', 'LIKE');
       }
       $sql_query->condition($condition);
@@ -1944,7 +1944,7 @@ function _locale_translate_seek() {
 }
 
 /**
- * Build array out of search criteria specified in request variables
+ * Build array out of animals_search_block criteria specified in request variables
  */
 function _locale_translate_seek_query() {
   $query = &drupal_static(__FUNCTION__);
@@ -2124,7 +2124,7 @@ function _locale_rebuild_js($langcode = NULL) {
 }
 
 /**
- * List languages in search result table
+ * List languages in animals_search_block result table
  */
 function _locale_translate_language_list($translation, $limit_language) {
   // Add CSS.

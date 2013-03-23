@@ -142,7 +142,7 @@ function image_field_instance_settings_form($field, $instance) {
     '#type' => 'checkbox',
     '#title' => t('Enable <em>Alt</em> field'),
     '#default_value' => $settings['alt_field'],
-    '#description' => t('The alt attribute may be used by search engines, screen readers, and when the image cannot be loaded.'),
+    '#description' => t('The alt attribute may be used by animals_search_block engines, screen readers, and when the image cannot be loaded.'),
     '#weight' => 10,
   );
   $form['title_field'] = array(
@@ -423,7 +423,7 @@ function image_field_widget_process($element, &$form_state, $form) {
     '#title' => t('Alternate text'),
     '#type' => 'textfield',
     '#default_value' => isset($item['alt']) ? $item['alt'] : '',
-    '#description' => t('This text will be used by screen readers, search engines, or when the image cannot be loaded.'),
+    '#description' => t('This text will be used by screen readers, animals_search_block engines, or when the image cannot be loaded.'),
     // @see http://www.gawds.org/show.php?contentid=28
     '#maxlength' => 512,
     '#weight' => -2,

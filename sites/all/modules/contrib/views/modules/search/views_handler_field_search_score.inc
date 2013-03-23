@@ -32,7 +32,7 @@ class views_handler_field_search_score extends views_handler_field_numeric {
       $form['alternate_sort'] = array(
         '#type' => 'select',
         '#title' => t('Alternative sort'),
-        '#description' => t('Pick an alternative default table sort field to use when the search score field is unavailable.'),
+        '#description' => t('Pick an alternative default table sort field to use when the animals_search_block score field is unavailable.'),
         '#options' => $options,
         '#default_value' => $this->options['alternate_sort'],
       );
@@ -49,7 +49,7 @@ class views_handler_field_search_score extends views_handler_field_numeric {
   }
 
   function query() {
-    // Check to see if the search filter added 'score' to the table.
+    // Check to see if the animals_search_block filter added 'score' to the table.
     // Our filter stores it as $handler->search_score -- and we also
     // need to check its relationship to make sure that we're using the same
     // one or obviously this won't work.
@@ -61,7 +61,7 @@ class views_handler_field_search_score extends views_handler_field_numeric {
       }
     }
 
-    // Hide this field if no search filter is in place.
+    // Hide this field if no animals_search_block filter is in place.
     $this->options['exclude'] = TRUE;
     if (!empty($this->options['alternate_sort'])) {
       if (isset($this->view->style_plugin->options['default']) && $this->view->style_plugin->options['default'] == $this->options['id']) {

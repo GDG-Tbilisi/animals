@@ -48,7 +48,7 @@ define('PREG_CLASS_PUNCTUATION',
  * ranges that are reserved for additional CJK ideographs.
  *
  * The character ranges do not include numbers, punctuation, or symbols, since
- * these are handled separately in search. Note that radicals and strokes are
+ * these are handled separately in animals_search_block. Note that radicals and strokes are
  * considered symbols. (See
  * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt)
  *
@@ -65,32 +65,32 @@ define('PREG_CLASS_CJK', '\x{1100}-\x{11FF}\x{3040}-\x{309F}\x{30A1}-\x{318E}' .
  */
 function search_help($path, $arg) {
   switch ($path) {
-    case 'admin/help#search':
+    case 'admin/help#animals_search_block':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('The Search module provides the ability to index and search for content by exact keywords, and for users by username or e-mail. For more information, see the online handbook entry for <a href="@search-module">Search module</a>.', array('@search-module' => 'http://drupal.org/documentation/modules/search/', '@search' => url('search'))) . '</p>';
+      $output .= '<p>' . t('The Search module provides the ability to index and animals_search_block for content by exact keywords, and for users by username or e-mail. For more information, see the online handbook entry for <a href="@animals_search_block-module">Search module</a>.', array('@animals_search_block-module' => 'http://drupal.org/documentation/modules/animals_search_block/', '@animals_search_block' => url('animals_search_block'))) . '</p>';
       $output .= '<h3>' . t('Uses') . '</h3>';
       $output .= '<dl>';
       $output .= '<dt>' . t('Searching content and users') . '</dt>';
-      $output .= '<dd>' . t('Users with <em>Use search</em> permission can use the search block and <a href="@search">Search page</a>. Users with the <em>View published content</em> permission can search for content containing exact keywords. Users with the <em>View user profiles</em> permission can search for users containing the keyword anywhere in the user name, and users with the <em>Administer users</em> permission can search for users by email address. Additionally, users with <em>Use advanced search</em> permission can find content using more complex search methods and filtering by choosing the <em>Advanced search</em> option on the <a href="@search">Search page</a>.', array('@search' => url('search'))) . '</dd>';
+      $output .= '<dd>' . t('Users with <em>Use animals_search_block</em> permission can use the animals_search_block block and <a href="@animals_search_block">Search page</a>. Users with the <em>View published content</em> permission can animals_search_block for content containing exact keywords. Users with the <em>View user profiles</em> permission can animals_search_block for users containing the keyword anywhere in the user name, and users with the <em>Administer users</em> permission can animals_search_block for users by email address. Additionally, users with <em>Use advanced animals_search_block</em> permission can find content using more complex animals_search_block methods and filtering by choosing the <em>Advanced animals_search_block</em> option on the <a href="@animals_search_block">Search page</a>.', array('@animals_search_block' => url('animals_search_block'))) . '</dd>';
       $output .= '<dt>' . t('Indexing content with cron') . '</dt>';
-      $output .= '<dd>' . t('To provide keyword searching, the search engine maintains an index of words found in the content and its fields, along with text added to your content by other modules (such as comments from the core Comment module, and taxonomy terms from the core Taxonomy module). To build and maintain this index, a correctly configured <a href="@cron">cron maintenance task</a> is required. Users with <em>Administer search</em> permission can further configure the cron settings on the <a href="@searchsettings">Search settings page</a>.', array('@cron' => 'http://drupal.org/cron', '@searchsettings' => url('admin/config/search/settings'))) . '</dd>';
+      $output .= '<dd>' . t('To provide keyword searching, the animals_search_block engine maintains an index of words found in the content and its fields, along with text added to your content by other modules (such as comments from the core Comment module, and taxonomy terms from the core Taxonomy module). To build and maintain this index, a correctly configured <a href="@cron">cron maintenance task</a> is required. Users with <em>Administer animals_search_block</em> permission can further configure the cron settings on the <a href="@searchsettings">Search settings page</a>.', array('@cron' => 'http://drupal.org/cron', '@searchsettings' => url('admin/config/animals_search_block/settings'))) . '</dd>';
       $output .= '<dt>' . t('Content reindexing') . '</dt>';
-      $output .= '<dd>' . t('Content-related actions on your site (creating, editing, or deleting content and comments) automatically cause affected content items to be marked for indexing or reindexing at the next cron run. When content is marked for reindexing, the previous content remains in the index until cron runs, at which time it is replaced by the new content. Unlike content-related actions, actions related to the structure of your site do not cause affected content to be marked for reindexing. Examples of structure-related actions that affect content include deleting or editing taxonomy terms, enabling or disabling modules that add text to content (such as Taxonomy, Comment, and field-providing modules), and modifying the fields or display parameters of your content types. If you take one of these actions and you want to ensure that the search index is updated to reflect your changed site structure, you can mark all content for reindexing by clicking the "Re-index site" button on the <a href="@searchsettings">Search settings page</a>. If you have a lot of content on your site, it may take several cron runs for the content to be reindexed.', array('@searchsettings' => url('admin/config/search/settings'))) . '</dd>';
-      $output .= '<dt>' . t('Configuring search settings') . '</dt>';
-      $output .= '<dd>' . t('Indexing behavior can be adjusted using the <a href="@searchsettings">Search settings page</a>. Users with <em>Administer search</em> permission can control settings such as the <em>Number of items to index per cron run</em>, <em>Indexing settings</em> (word length), <em>Active search modules</em>, and <em>Content ranking</em>, which lets you adjust the priority in which indexed content is returned in results.', array('@searchsettings' => url('admin/config/search/settings'))) . '</dd>';
+      $output .= '<dd>' . t('Content-related actions on your site (creating, editing, or deleting content and comments) automatically cause affected content items to be marked for indexing or reindexing at the next cron run. When content is marked for reindexing, the previous content remains in the index until cron runs, at which time it is replaced by the new content. Unlike content-related actions, actions related to the structure of your site do not cause affected content to be marked for reindexing. Examples of structure-related actions that affect content include deleting or editing taxonomy terms, enabling or disabling modules that add text to content (such as Taxonomy, Comment, and field-providing modules), and modifying the fields or display parameters of your content types. If you take one of these actions and you want to ensure that the animals_search_block index is updated to reflect your changed site structure, you can mark all content for reindexing by clicking the "Re-index site" button on the <a href="@searchsettings">Search settings page</a>. If you have a lot of content on your site, it may take several cron runs for the content to be reindexed.', array('@searchsettings' => url('admin/config/animals_search_block/settings'))) . '</dd>';
+      $output .= '<dt>' . t('Configuring animals_search_block settings') . '</dt>';
+      $output .= '<dd>' . t('Indexing behavior can be adjusted using the <a href="@searchsettings">Search settings page</a>. Users with <em>Administer animals_search_block</em> permission can control settings such as the <em>Number of items to index per cron run</em>, <em>Indexing settings</em> (word length), <em>Active animals_search_block modules</em>, and <em>Content ranking</em>, which lets you adjust the priority in which indexed content is returned in results.', array('@searchsettings' => url('admin/config/animals_search_block/settings'))) . '</dd>';
       $output .= '<dt>' . t('Search block') . '</dt>';
       $output .= '<dd>' . t('The Search module includes a default <em>Search form</em> block, which can be enabled and configured on the <a href="@blocks">Blocks administration page</a>. The block is available to users with the <em>Search content</em> permission.', array('@blocks' => url('admin/structure/block'))) . '</dd>';
       $output .= '<dt>' . t('Extending Search module') . '</dt>';
-      $output .= '<dd>' . t('By default, the Search module only supports exact keyword matching in content searches. You can modify this behavior by installing a language-specific stemming module for your language (such as <a href="http://drupal.org/project/porterstemmer">Porter Stemmer</a> for American English), which allows words such as walk, walking, and walked to be matched in the Search module. Another approach is to use a third-party search technology with stemming or partial word matching features built in, such as <a href="http://drupal.org/project/apachesolr">Apache Solr</a> or <a href="http://drupal.org/project/sphinx">Sphinx</a>. These and other <a href="@contrib-search">search-related contributed modules</a> can be downloaded by visiting Drupal.org.', array('@contrib-search' => 'http://drupal.org/project/modules?filters=tid%3A105')) . '</dd>';
+      $output .= '<dd>' . t('By default, the Search module only supports exact keyword matching in content searches. You can modify this behavior by installing a language-specific stemming module for your language (such as <a href="http://drupal.org/project/porterstemmer">Porter Stemmer</a> for American English), which allows words such as walk, walking, and walked to be matched in the Search module. Another approach is to use a third-party animals_search_block technology with stemming or partial word matching features built in, such as <a href="http://drupal.org/project/apachesolr">Apache Solr</a> or <a href="http://drupal.org/project/sphinx">Sphinx</a>. These and other <a href="@contrib-animals_search_block">animals_search_block-related contributed modules</a> can be downloaded by visiting Drupal.org.', array('@contrib-animals_search_block' => 'http://drupal.org/project/modules?filters=tid%3A105')) . '</dd>';
       $output .= '</dl>';
       return $output;
-    case 'admin/config/search/settings':
-      return '<p>' . t('The search engine maintains an index of words found in your site\'s content. To build and maintain this index, a correctly configured <a href="@cron">cron maintenance task</a> is required. Indexing behavior can be adjusted using the settings below.', array('@cron' => url('admin/reports/status'))) . '</p>';
-    case 'search#noresults':
+    case 'admin/config/animals_search_block/settings':
+      return '<p>' . t('The animals_search_block engine maintains an index of words found in your site\'s content. To build and maintain this index, a correctly configured <a href="@cron">cron maintenance task</a> is required. Indexing behavior can be adjusted using the settings below.', array('@cron' => url('admin/reports/status'))) . '</p>';
+    case 'animals_search_block#noresults':
       return t('<ul>
 <li>Check if your spelling is correct.</li>
-<li>Remove quotes around phrases to search for each word individually. <em>bike shed</em> will often show more results than <em>&quot;bike shed&quot;</em>.</li>
+<li>Remove quotes around phrases to animals_search_block for each word individually. <em>bike shed</em> will often show more results than <em>&quot;bike shed&quot;</em>.</li>
 <li>Consider loosening your query with <em>OR</em>. <em>bike OR shed</em> will often show more results than <em>bike shed</em>.</li>
 </ul>');
   }
@@ -103,17 +103,17 @@ function search_theme() {
   return array(
     'search_block_form' => array(
       'render element' => 'form',
-      'template' => 'search-block-form',
+      'template' => 'animals_search_block-block-form',
     ),
     'search_result' => array(
       'variables' => array('result' => NULL, 'module' => NULL),
-      'file' => 'search.pages.inc',
-      'template' => 'search-result',
+      'file' => 'animals_search_block.pages.inc',
+      'template' => 'animals_search_block-result',
     ),
     'search_results' => array(
       'variables' => array('results' => NULL, 'module' => NULL),
-      'file' => 'search.pages.inc',
-      'template' => 'search-results',
+      'file' => 'animals_search_block.pages.inc',
+      'template' => 'animals_search_block-results',
     ),
   );
 }
@@ -123,14 +123,14 @@ function search_theme() {
  */
 function search_permission() {
   return array(
-    'administer search' => array(
-      'title' => t('Administer search'),
+    'administer animals_search_block' => array(
+      'title' => t('Administer animals_search_block'),
     ),
-    'search content' => array(
-      'title' => t('Use search'),
+    'animals_search_block content' => array(
+      'title' => t('Use animals_search_block'),
     ),
-    'use advanced search' => array(
-      'title' => t('Use advanced search'),
+    'use advanced animals_search_block' => array(
+      'title' => t('Use advanced animals_search_block'),
     ),
   );
 }
@@ -150,7 +150,7 @@ function search_block_info() {
  * Implements hook_block_view().
  */
 function search_block_view($delta = '') {
-  if (user_access('search content')) {
+  if (user_access('animals_search_block content')) {
     $block['content'] = drupal_get_form('search_block_form');
     return $block;
   }
@@ -160,34 +160,34 @@ function search_block_view($delta = '') {
  * Implements hook_menu().
  */
 function search_menu() {
-  $items['search'] = array(
+  $items['animals_search_block'] = array(
     'title' => 'Search',
     'page callback' => 'search_view',
     'access callback' => 'search_is_active',
     'type' => MENU_SUGGESTED_ITEM,
-    'file' => 'search.pages.inc',
+    'file' => 'animals_search_block.pages.inc',
   );
-  $items['admin/config/search/settings'] = array(
+  $items['admin/config/animals_search_block/settings'] = array(
     'title' => 'Search settings',
-    'description' => 'Configure relevance settings for search and other indexing options.',
+    'description' => 'Configure relevance settings for animals_search_block and other indexing options.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('search_admin_settings'),
-    'access arguments' => array('administer search'),
+    'access arguments' => array('administer animals_search_block'),
     'weight' => -10,
-    'file' => 'search.admin.inc',
+    'file' => 'animals_search_block.admin.inc',
   );
-  $items['admin/config/search/settings/reindex'] = array(
+  $items['admin/config/animals_search_block/settings/reindex'] = array(
     'title' => 'Clear index',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('search_reindex_confirm'),
-    'access arguments' => array('administer search'),
+    'access arguments' => array('administer animals_search_block'),
     'type' => MENU_VISIBLE_IN_BREADCRUMB,
-    'file' => 'search.admin.inc',
+    'file' => 'animals_search_block.admin.inc',
   );
 
-  // Add paths for searching. We add each module search path twice: once without
+  // Add paths for searching. We add each module animals_search_block path twice: once without
   // and once with %menu_tail appended. The reason for this is that we want to
-  // preserve keywords when switching tabs, and also to have search tabs
+  // preserve keywords when switching tabs, and also to have animals_search_block tabs
   // highlighted properly. The only way to do that within the Drupal menu
   // system appears to be having two sets of tabs. See discussion on issue
   // http://drupal.org/node/245103 for details.
@@ -196,7 +196,7 @@ function search_menu() {
   $default_info = search_get_default_module_info();
   if ($default_info) {
     foreach (search_get_info() as $module => $search_info) {
-      $path = 'search/' . $search_info['path'];
+      $path = 'animals_search_block/' . $search_info['path'];
       $items[$path] = array(
         'title' => $search_info['title'],
         'page callback' => 'search_view',
@@ -204,7 +204,7 @@ function search_menu() {
         'access callback' => '_search_menu_access',
         'access arguments' => array($module),
         'type' => MENU_LOCAL_TASK,
-        'file' => 'search.pages.inc',
+        'file' => 'animals_search_block.pages.inc',
         'weight' => $module == $default_info['module'] ? -10 : 0,
       );
       $items["$path/%menu_tail"] = array(
@@ -217,12 +217,12 @@ function search_menu() {
         // The default local task points to its parent, but this item points to
         // where it should so it should not be changed.
         'type' => MENU_LOCAL_TASK,
-        'file' => 'search.pages.inc',
+        'file' => 'animals_search_block.pages.inc',
         'weight' => 0,
         // These tabs are not subtabs.
-        'tab_root' => 'search/' . $default_info['path'] . '/%',
+        'tab_root' => 'animals_search_block/' . $default_info['path'] . '/%',
         // These tabs need to display at the same level.
-        'tab_parent' => 'search/' . $default_info['path'],
+        'tab_parent' => 'animals_search_block/' . $default_info['path'],
       );
     }
   }
@@ -230,20 +230,20 @@ function search_menu() {
 }
 
 /**
- * Determines access for the ?q=search path.
+ * Determines access for the ?q=animals_search_block path.
  */
 function search_is_active() {
   // This path cannot be accessed if there are no active modules.
-  return user_access('search content') && search_get_info();
+  return user_access('animals_search_block content') && search_get_info();
 }
 
 /**
- * Returns information about available search modules.
+ * Returns information about available animals_search_block modules.
  *
  * @param $all
  *   If TRUE, information about all enabled modules implementing
  *   hook_search_info() will be returned. If FALSE (default), only modules that
- *   have been set to active on the search settings page will be returned.
+ *   have been set to active on the animals_search_block settings page will be returned.
  *
  * @return
  *   Array of hook_search_info() return values, keyed by module name. The
@@ -273,10 +273,10 @@ function search_get_info($all = FALSE) {
 }
 
 /**
- * Returns information about the default search module.
+ * Returns information about the default animals_search_block module.
  *
  * @return
- *    The search_get_info() array element for the default search module, if any.
+ *    The search_get_info() array element for the default animals_search_block module, if any.
  */
 function search_get_default_module_info() {
   $info = search_get_info();
@@ -290,22 +290,22 @@ function search_get_default_module_info() {
 }
 
 /**
- * Access callback for search tabs.
+ * Access callback for animals_search_block tabs.
  */
 function _search_menu_access($name) {
-  return user_access('search content') && (!function_exists($name . '_search_access') || module_invoke($name, 'search_access'));
+  return user_access('animals_search_block content') && (!function_exists($name . '_search_access') || module_invoke($name, 'search_access'));
 }
 
 /**
- * Clears a part of or the entire search index.
+ * Clears a part of or the entire animals_search_block index.
  *
  * @param $sid
- *   (optional) The ID of the item to remove from the search index. If
+ *   (optional) The ID of the item to remove from the animals_search_block index. If
  *   specified, $module must also be given. Omit both $sid and $module to clear
- *   the entire search index.
+ *   the entire animals_search_block index.
  * @param $module
  *   (optional) The machine-readable name of the module for the item to remove
- *   from the search index.
+ *   from the animals_search_block index.
  */
 function search_reindex($sid = NULL, $module = NULL, $reindex = FALSE) {
   if ($module == NULL && $sid == NULL) {
@@ -437,7 +437,7 @@ function search_simplify($text) {
   $text = preg_replace('/[.-]{2,}/', ' ', $text);
 
   // The dot, underscore and dash are simply removed. This allows meaningful
-  // search behavior with acronyms and URLs. See unicode note directly above.
+  // animals_search_block behavior with acronyms and URLs. See unicode note directly above.
   $text = preg_replace('/[._-]+/', '', $text);
 
   // With the exception of the rules above, we consider all punctuation,
@@ -458,7 +458,7 @@ function search_simplify($text) {
  * The Search module matches exact words, where a word is defined to be a
  * sequence of characters delimited by spaces or punctuation. CJK languages are
  * written in long strings of characters, though, not split up into words. So
- * in order to allow search matching, we split up CJK text into tokens
+ * in order to allow animals_search_block matching, we split up CJK text into tokens
  * consisting of consecutive, overlapping sequences of characters whose length
  * is equal to the 'minimum_word_size' variable. This tokenizing is only done if
  * the 'overlap_cjk' variable is TRUE.
@@ -539,7 +539,7 @@ function search_invoke_preprocess(&$text) {
 }
 
 /**
- * Update the full-text search index for a particular item.
+ * Update the full-text animals_search_block index for a particular item.
  *
  * @param $sid
  *   An ID number identifying this particular item (e.g., node ID).
@@ -549,7 +549,7 @@ function search_invoke_preprocess(&$text) {
  * @param $text
  *   The content of this item. Must be a piece of HTML or plain text.
  *
- * @ingroup search
+ * @ingroup animals_search_block
  */
 function search_index($sid, $module, $text) {
   $minimum_word_size = variable_get('minimum_word_size', 3);
@@ -704,7 +704,7 @@ function search_index($sid, $module, $text) {
     ))
     ->execute();
 
-  // Insert results into search index
+  // Insert results into animals_search_block index
   foreach ($results[0] as $word => $score) {
     // If a word already exists in the database, its score gets increased
     // appropriately. If not, we create a new record with the appropriate
@@ -853,19 +853,19 @@ function search_comment_unpublish($comment) {
 }
 
 /**
- * Extracts a module-specific search option from a search expression.
+ * Extracts a module-specific animals_search_block option from a animals_search_block expression.
  *
  * Search options are added using search_expression_insert(), and retrieved
  * using search_expression_extract(). They take the form option:value, and
- * are added to the ordinary keywords in the search expression.
+ * are added to the ordinary keywords in the animals_search_block expression.
  *
  * @param $expression
- *   The search expression to extract from.
+ *   The animals_search_block expression to extract from.
  * @param $option
- *   The name of the option to retrieve from the search expression.
+ *   The name of the option to retrieve from the animals_search_block expression.
  *
  * @return
- *   The value previously stored in the search expression for option $option,
+ *   The value previously stored in the animals_search_block expression for option $option,
  *   if any. Trailing spaces in values will not be included.
  */
 function search_expression_extract($expression, $option) {
@@ -875,21 +875,21 @@ function search_expression_extract($expression, $option) {
 }
 
 /**
- * Adds a module-specific search option to a search expression.
+ * Adds a module-specific animals_search_block option to a animals_search_block expression.
  *
  * Search options are added using search_expression_insert(), and retrieved
  * using search_expression_extract(). They take the form option:value, and
- * are added to the ordinary keywords in the search expression.
+ * are added to the ordinary keywords in the animals_search_block expression.
  *
  * @param $expression
- *   The search expression to add to.
+ *   The animals_search_block expression to add to.
  * @param $option
- *   The name of the option to add to the search expression.
+ *   The name of the option to add to the animals_search_block expression.
  * @param $value
  *   The value to add for the option. If present, it will replace any previous
  *   value added for the option. Cannot contain any spaces or | characters, as
  *   these are used as delimiters. If you want to add a blank value $option: to
- *   the search expression, pass in an empty string or a string that is composed
+ *   the animals_search_block expression, pass in an empty string or a string that is composed
  *   of only spaces. To clear a previously-stored option without adding a
  *   replacement, pass in NULL for $value or omit.
  *
@@ -909,51 +909,51 @@ function search_expression_insert($expression, $option, $value = NULL) {
 }
 
 /**
- * @defgroup search Search interface
+ * @defgroup animals_search_block Search interface
  * @{
- * The Drupal search interface manages a global search mechanism.
+ * The Drupal animals_search_block interface manages a global animals_search_block mechanism.
  *
  * Modules may plug into this system to provide searches of different types of
- * data. Most of the system is handled by search.module, so this must be enabled
- * for all of the search features to work.
+ * data. Most of the system is handled by animals_search_block.module, so this must be enabled
+ * for all of the animals_search_block features to work.
  *
- * There are three ways to interact with the search system:
+ * There are three ways to interact with the animals_search_block system:
  * - Specifically for searching nodes, you can implement
  *   hook_node_update_index() and hook_node_search_result(). However, note that
- *   the search system already indexes all visible output of a node; i.e.,
+ *   the animals_search_block system already indexes all visible output of a node; i.e.,
  *   everything displayed normally by hook_view() and hook_node_view(). This is
  *   usually sufficient. You should only use this mechanism if you want
  *   additional, non-visible data to be indexed.
- * - Implement hook_search_info(). This will create a search tab for your module
- *   on the /search page with a simple keyword search form. You will also need
- *   to implement hook_search_execute() to perform the search.
+ * - Implement hook_search_info(). This will create a animals_search_block tab for your module
+ *   on the /animals_search_block page with a simple keyword animals_search_block form. You will also need
+ *   to implement hook_search_execute() to perform the animals_search_block.
  * - Implement hook_update_index(). This allows your module to use Drupal's
  *   HTML indexing mechanism for searching full text efficiently.
  *
- * If your module needs to provide a more complicated search form, then you need
+ * If your module needs to provide a more complicated animals_search_block form, then you need
  * to implement it yourself without hook_search_info(). In that case, you should
- * define it as a local task (tab) under the /search page (e.g. /search/mymodule)
+ * define it as a local task (tab) under the /animals_search_block page (e.g. /animals_search_block/mymodule)
  * so that users can easily find it.
  */
 
 /**
- * Builds a search form.
+ * Builds a animals_search_block form.
  *
  * @param $action
- *   Form action. Defaults to "search/$path", where $path is the search path
+ *   Form action. Defaults to "animals_search_block/$path", where $path is the animals_search_block path
  *   associated with the module in its hook_search_info(). This will be
  *   run through url().
  * @param $keys
- *   The search string entered by the user, containing keywords for the search.
+ *   The animals_search_block string entered by the user, containing keywords for the animals_search_block.
  * @param $module
- *   The search module to render the form for: a module that implements
- *   hook_search_info(). If not supplied, the default search module is used.
+ *   The animals_search_block module to render the form for: a module that implements
+ *   hook_search_info(). If not supplied, the default animals_search_block module is used.
  * @param $prompt
  *   Label for the keywords field. Defaults to t('Enter your keywords') if NULL.
  *   Supply '' to omit.
  *
  * @return
- *   A Form API array for the search form.
+ *   A Form API array for the animals_search_block form.
  */
 function search_form($form, &$form_state, $action = '', $keys = '', $module = NULL, $prompt = NULL) {
   $module_info = FALSE;
@@ -972,7 +972,7 @@ function search_form($form, &$form_state, $action = '', $keys = '', $module = NU
   }
 
   if (!$action) {
-    $action = 'search/' . $module_info['path'];
+    $action = 'animals_search_block/' . $module_info['path'];
   }
   if (!isset($prompt)) {
     $prompt = t('Enter your keywords');
@@ -981,7 +981,7 @@ function search_form($form, &$form_state, $action = '', $keys = '', $module = NU
   $form['#action'] = url($action);
   // Record the $action for later use in redirecting.
   $form_state['action'] = $action;
-  $form['#attributes']['class'][] = 'search-form';
+  $form['#attributes']['class'][] = 'animals_search_block-form';
   $form['module'] = array('#type' => 'value', '#value' => $module);
   $form['basic'] = array('#type' => 'container', '#attributes' => array('class' => array('container-inline')));
   $form['basic']['keys'] = array(
@@ -992,7 +992,7 @@ function search_form($form, &$form_state, $action = '', $keys = '', $module = NU
     '#maxlength' => 255,
   );
   // processed_keys is used to coordinate keyword passing between other forms
-  // that hook into the basic search form.
+  // that hook into the basic animals_search_block form.
   $form['basic']['processed_keys'] = array('#type' => 'value', '#value' => '');
   $form['basic']['submit'] = array('#type' => 'submit', '#value' => t('Search'));
 
@@ -1000,11 +1000,11 @@ function search_form($form, &$form_state, $action = '', $keys = '', $module = NU
 }
 
 /**
- * Form builder; Output a search form for the search block's search box.
+ * Form builder; Output a animals_search_block form for the animals_search_block block's animals_search_block box.
  *
  * @ingroup forms
  * @see search_box_form_submit()
- * @see search-block-form.tpl.php
+ * @see animals_search_block-block-form.tpl.php
  */
 function search_box($form, &$form_state, $form_id) {
   $form[$form_id] = array(
@@ -1013,7 +1013,7 @@ function search_box($form, &$form_state, $form_id) {
     '#title_display' => 'invisible',
     '#size' => 15,
     '#default_value' => '',
-    '#attributes' => array('title' => t('Enter the terms you wish to search for.')),
+    '#attributes' => array('title' => t('Enter the terms you wish to animals_search_block for.')),
   );
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Search'));
@@ -1023,10 +1023,10 @@ function search_box($form, &$form_state, $form_id) {
 }
 
 /**
- * Process a block search form submission.
+ * Process a block animals_search_block form submission.
  */
 function search_box_form_submit($form, &$form_state) {
-  // The search form relies on control of the redirect destination for its
+  // The animals_search_block form relies on control of the redirect destination for its
   // functionality, so we override any static destination set in the request,
   // for example by drupal_access_denied() or drupal_not_found()
   // (see http://drupal.org/node/292565).
@@ -1038,7 +1038,7 @@ function search_box_form_submit($form, &$form_state) {
   // If it is empty, display an error message.
   // (This method is used instead of setting #required to TRUE for this field
   // because that results in a confusing error message.  It would say a plain
-  // "field is required" because the search keywords field has no title.
+  // "field is required" because the animals_search_block keywords field has no title.
   // The error message would also complain about a missing #title field.)
   if ($form_state['values']['search_block_form'] == '') {
     form_set_error('keys', t('Please enter some keywords.'));
@@ -1047,7 +1047,7 @@ function search_box_form_submit($form, &$form_state) {
   $form_id = $form['form_id']['#value'];
   $info = search_get_default_module_info();
   if ($info) {
-    $form_state['redirect'] = 'search/' . $info['path'] . '/' . trim($form_state['values'][$form_id]);
+    $form_state['redirect'] = 'animals_search_block/' . $info['path'] . '/' . trim($form_state['values'][$form_id]);
   }
   else {
     form_set_error(NULL, t('Search is currently disabled.'), 'error');
@@ -1055,15 +1055,15 @@ function search_box_form_submit($form, &$form_state) {
 }
 
 /**
- * Process variables for search-block-form.tpl.php.
+ * Process variables for animals_search_block-block-form.tpl.php.
  *
  * The $variables array contains the following arguments:
  * - $form
  *
- * @see search-block-form.tpl.php
+ * @see animals_search_block-block-form.tpl.php
  */
 function template_preprocess_search_block_form(&$variables) {
-  $variables['search'] = array();
+  $variables['animals_search_block'] = array();
   $hidden = array();
   // Provide variables named after form keys so themers can print each element independently.
   foreach (element_children($variables['form']) as $key) {
@@ -1072,28 +1072,28 @@ function template_preprocess_search_block_form(&$variables) {
       $hidden[] = drupal_render($variables['form'][$key]);
     }
     else {
-      $variables['search'][$key] = drupal_render($variables['form'][$key]);
+      $variables['animals_search_block'][$key] = drupal_render($variables['form'][$key]);
     }
   }
   // Hidden form elements have no value to themers. No need for separation.
-  $variables['search']['hidden'] = implode($hidden);
+  $variables['animals_search_block']['hidden'] = implode($hidden);
   // Collect all form elements to make it easier to print the whole form.
-  $variables['search_form'] = implode($variables['search']);
+  $variables['search_form'] = implode($variables['animals_search_block']);
 }
 
 /**
- * Performs a search by calling hook_search_execute().
+ * Performs a animals_search_block by calling hook_search_execute().
  *
  * @param $keys
- *   Keyword query to search on.
+ *   Keyword query to animals_search_block on.
  * @param $module
- *   Search module to search.
+ *   Search module to animals_search_block.
  * @param $conditions
- *   Optional array of additional search conditions.
+ *   Optional array of additional animals_search_block conditions.
  *
  * @return
- *   Renderable array of search results. No return value if $keys are not
- *   supplied or if the given search module is not active.
+ *   Renderable array of animals_search_block results. No return value if $keys are not
+ *   supplied or if the given animals_search_block module is not active.
  */
 function search_data($keys, $module, $conditions = NULL) {
   if (module_hook($module, 'search_execute')) {
@@ -1113,10 +1113,10 @@ function search_data($keys, $module, $conditions = NULL) {
 
 /**
  * Returns snippets from a piece of text, with certain keywords highlighted.
- * Used for formatting search results.
+ * Used for formatting animals_search_block results.
  *
  * @param $keys
- *   A string containing a search query.
+ *   A string containing a animals_search_block query.
  *
  * @param $text
  *   The text to extract fragments from.
@@ -1136,7 +1136,7 @@ function search_excerpt($keys, $text) {
   $text = strip_tags(str_replace(array('<', '>'), array(' <', '> '), $text));
   $text = decode_entities($text);
 
-  // Slash-escape quotes in the search keyword string.
+  // Slash-escape quotes in the animals_search_block keyword string.
   array_walk($keys, '_search_excerpt_replace');
   $workkeys = $keys;
 
@@ -1258,7 +1258,7 @@ function search_excerpt($keys, $text) {
 }
 
 /**
- * @} End of "defgroup search".
+ * @} End of "defgroup animals_search_block".
  */
 
 /**
@@ -1277,7 +1277,7 @@ function _search_excerpt_replace(&$text) {
  * @param $key
  *   The keyword to find.
  * @param $text
- *   The text to search for the keyword.
+ *   The text to animals_search_block for the keyword.
  * @param $offset
  *   Offset position in $text to start searching at.
  * @param $boundary

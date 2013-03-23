@@ -649,22 +649,22 @@ function hook_node_prepare($node) {
 }
 
 /**
- * Act on a node being displayed as a search result.
+ * Act on a node being displayed as a animals_search_block result.
  *
  * This hook is invoked from node_search_execute(), after node_load()
  * and node_view() have been called.
  *
  * @param $node
- *   The node being displayed in a search result.
+ *   The node being displayed in a animals_search_block result.
  *
  * @return array
- *   Extra information to be displayed with search result. This information
+ *   Extra information to be displayed with animals_search_block result. This information
  *   should be presented as an associative array. It will be concatenated
- *   with the post information (last updated, author) in the default search
+ *   with the post information (last updated, author) in the default animals_search_block
  *   result theming.
  *
  * @see template_preprocess_search_result()
- * @see search-result.tpl.php
+ * @see animals_search_block-result.tpl.php
  *
  * @ingroup node_api_hooks
  */
@@ -724,7 +724,7 @@ function hook_node_update($node) {
 /**
  * Act on a node being indexed for searching.
  *
- * This hook is invoked during search indexing, after node_load(), and after
+ * This hook is invoked during animals_search_block indexing, after node_load(), and after
  * the result of node_view() is added as $node->rendered to the node object.
  *
  * @param $node
@@ -925,13 +925,13 @@ function hook_node_info() {
 }
 
 /**
- * Provide additional methods of scoring for core search results for nodes.
+ * Provide additional methods of scoring for core animals_search_block results for nodes.
  *
- * A node's search score is used to rank it among other nodes matched by the
- * search, with the highest-ranked nodes appearing first in the search listing.
+ * A node's animals_search_block score is used to rank it among other nodes matched by the
+ * animals_search_block, with the highest-ranked nodes appearing first in the animals_search_block listing.
  *
  * For example, a module allowing users to vote on content could expose an
- * option to allow search results' rankings to be influenced by the average
+ * option to allow animals_search_block results' rankings to be influenced by the average
  * voting score of a node.
  *
  * All scoring mechanisms are provided as options to site administrators, and
@@ -973,7 +973,7 @@ function hook_ranking() {
     return array(
       'vote_average' => array(
         'title' => t('Average vote'),
-        // Note that we use i.sid, the search index's search item id, rather than
+        // Note that we use i.sid, the animals_search_block index's animals_search_block item id, rather than
         // n.nid.
         'join' => 'LEFT JOIN {vote_node_data} vote_node_data ON vote_node_data.nid = i.sid',
         // The highest possible score should be 1, and the lowest possible score,
