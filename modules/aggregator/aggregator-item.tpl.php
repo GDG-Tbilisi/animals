@@ -38,9 +38,9 @@
   </div>
 <?php endif; ?>
 
-<?php if ($categories): ?>
+<?php if ($category): ?>
   <div class="feed-item-categories">
-    <?php print t('Categories'); ?>: <?php print implode(', ', $categories); ?>
+    <?php print t('Categories'); ?>: <?php print implode(', ', $category); ?>
   </div>
 <?php endif ;?>
 

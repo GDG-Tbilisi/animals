@@ -1,7 +1,12 @@
-<?php
-echo "<pre>";
-print_r($vars);
-//foreach($vars->key as $current){
-//   echo ($vars[$current]);
-//}
-echo "</pre>";
+<ul>
+    <?php
+    foreach ($vars as $category):
+        ?>
+        <li>
+        <?php print $category; ?>
+        </li>
+    <?php endforeach; ?>
+
+</ul>
+
+

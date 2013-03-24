@@ -1,49 +1,61 @@
 <?php
 
-function theme_helper_block_info(){
+function theme_helper_block_info()
+{
     $blocks['categories'] = array(
-       'info' => t('Categories Block'),
+        'info' => t('Categories Block'),
     );
     return $blocks;
 }
-function theme_helper_block_view($delta = ''){
-        $block = array();
 
-        switch($delta){
-            case 'categories':
-                $block['Subject'] = t('Categories');
-                $block['content'] = array(
-                    '#markup' => theme_helper_categories_content()
-                );
-        }
+function theme_helper_block_view($delta = '')
+{
+    $block = array();
+
+    switch ($delta) {
+        case 'categories':
+            $block['Subject'] = t('Categories');
+            $block['content'] = array(
+                '#markup' => theme_helper_categories_content()
+            );
+    }
     return $block;
 }
 
-function theme_helper_categories_content(){
-//    $vars = array(
-//      'first' => 'FIRST',
-//      'second' => 'SECOND',
-//      'third' => 'THIRD',
-//    );
-    $tax  = taxonomy_vocabulary_machine_name_load('services');
-    $vid  = $tax->vid;
-    $vars = taxonomy_term_get_by_vid($vid);
-    return theme('theme_helper',array('vars' => $vars));
+function theme_helper_categories_content()
+{
+    global $base_url;
+    $tax = taxonomy_vocabulary_machine_name_load('services');
+    $vid = $tax->vid;
+    $taxonomy_term_ids = taxonomy_terms_get_by_vid($vid);
+    foreach ($taxonomy_term_ids as $term_id) {
+        $tid[] = $term_id->tid;
+    }
+
+    $terms = taxonomy_term_load_multiple($tid);
+
+    foreach ($terms as $term) {
+        $term_links[] = l($term->name, $base_url . '/taxonomy/term/' . $term->tid);
+
+    }
+    return theme('theme_helper', array('vars' => $term_links));
 }
 
-function taxonomy_term_get_by_vid($vid) {
-    $query  = new EntityFieldQuery();
+function taxonomy_terms_get_by_vid($vid)
+{
+    $query = new EntityFieldQuery();
     $result = $query
         ->entityCondition('entity_type', 'taxonomy_term')
-        ->propertyCondition('vid', (int) $vid, '=')
+        ->propertyCondition('vid', (int)$vid, '=')
         ->execute();
     return $result['taxonomy_term'];
 }
 
-function theme_helper_theme(){
+function theme_helper_theme()
+{
     return array(
-       'theme_helper' => array(
-            'template'  => 'tpl/theme_helper',
+        'theme_helper' => array(
+            'template' => 'tpl/theme_helper',
             'variables' => array(),
         )
     );
